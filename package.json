@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "vue": "^1.0.18",
-    "babel-runtime": "^5.8.0"
+    "babel-runtime": "^6.6.1"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
@@ -27,7 +27,7 @@
     "css-loader": "^0.23.0",
     "eslint": "^2.0.0",
     "eslint-config-standard": "^5.1.0",
-    "eslint-friendly-formatter": "^1.2.2",
+    "eslint-friendly-formatter": "^2.0.1",
     "eslint-loader": "^1.3.0",
     "eslint-plugin-html": "^1.4.0",
     "eslint-plugin-promise": "^1.0.8",
@@ -38,7 +38,7 @@
     "file-loader": "^0.8.4",
     "function-bind": "^1.0.2",
     "html-webpack-plugin": "^2.8.1",
-    "http-proxy-middleware": "^0.12.0",
+    "http-proxy-middleware": "^0.13.0",
     "inject-loader": "^2.0.1",
     "isparta-loader": "^2.0.0",
     "json-loader": "^0.5.4",
@@ -48,7 +48,7 @@
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-sinon-chai": "^1.2.0",
     "karma-sourcemap-loader": "^0.3.7",
-    "karma-spec-reporter": "0.0.24",
+    "karma-spec-reporter": "0.0.26",
     "karma-webpack": "^1.7.0",
     "lolex": "^1.4.0",
     "mocha": "^2.4.5",
@@ -67,6 +67,6 @@
     "webpack": "^1.12.2",
     "webpack-dev-middleware": "^1.4.0",
     "webpack-hot-middleware": "^2.6.0",
-    "webpack-merge": "^0.8.3"
+    "webpack-merge": "^0.10.0"
   }
 }
