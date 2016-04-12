@@ -1,11 +1,11 @@
-var path = require('path')
-var config = require('../config')
-var webpack = require('webpack')
-var merge = require('webpack-merge')
-var baseWebpackConfig = require('./webpack.base.conf')
-var cssLoaders = require('./css-loaders')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
+var path = require('path');
+var config = require('../config');
+var webpack = require('webpack');
+var merge = require('webpack-merge');
+var baseWebpackConfig = require('./webpack.base.conf');
+var cssLoaders = require('./css-loaders');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = merge(baseWebpackConfig, {
     devtool: config.build.productionSourceMap ? '#source-map' : false,
@@ -58,4 +58,4 @@ module.exports = merge(baseWebpackConfig, {
             }
         })
     ]
-})
+});

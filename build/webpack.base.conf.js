@@ -1,8 +1,7 @@
-var path = require('path')
-var config = require('../config')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
-var cssLoaders = require('./css-loaders')
-var projectRoot = path.resolve(__dirname, '../')
+var path = require('path');
+var config = require('../config');
+var cssLoaders = require('./css-loaders');
+var projectRoot = path.resolve(__dirname, '../');
 
 module.exports = {
     entry: {
@@ -68,4 +67,4 @@ module.exports = {
     eslint: {
         formatter: require('eslint-friendly-formatter')
     }
-}
+};
