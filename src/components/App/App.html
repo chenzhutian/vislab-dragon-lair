@@ -2,7 +2,7 @@
     <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--grey-100 mdl-color-text--grey-800">
         <div class="mdl-layout__header-row">
             <!-- Title -->
-            <span class="mdl-layout-title">Videos</span>
+            <span class="mdl-layout-title">Papers</span>
             <!-- Add spacer, to align navigation to the right -->
             <div class="mdl-layout-spacer"></div>
             <!-- Navigation. We hide it in small screens. -->
@@ -18,7 +18,7 @@
         </div>
     </header>
     <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title">Videos</span>
+        <span class="mdl-layout-title">Papers</span>
         <nav class="mdl-navigation">
             <label class="mdl-navigation__link">
                 <hr/>
@@ -26,22 +26,39 @@
         </nav>
     </div>
     <div class="page-ribbon"></div>
-    <main class="demo-main mdl-layout__content">
+    <main class="page-main mdl-layout__content">
         <div class="page-content mdl-grid">
             <!-- Your content goes here -->
-            <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
-            <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
-                <div class="demo-crumbs mdl-color-text--grey-500">
-                    Google &gt; Material Design Lite &gt; How to install MDL
-                </div>
-                <h3>How to install MDL</h3>
-                <p>
-                    Cillum dolor esse sit incididunt velit eiusmod magna ad nostrud officia aute dolor dolor. Magna esse ullamco pariatur adipisicing
-                    consectetur eu commodo officia. Ex cillum consequat mollit minim elit est deserunt occaecat nisi amet.
-                    Quis aliqua nostrud Lorem occaecat sunt. Eiusmod quis amet ullamco aliquip dolore ut incididunt duis
-                    adipisicing. Elit consequat nisi eiusmod aute ipsum sunt veniam do est. Occaecat mollit aliquip ut proident
-                    consectetur amet ex dolore consectetur aliqua elit.
-                </p>
+            <div class="paper-content mdl-cell mdl-cell--10-col mdl-color--white mdl-shadow--4dp mdl-color-text--grey-800">
+
+
+                <!--<iframe class="pdf-viewer" src="http://docs.google.com/gview?url=http://infolab.stanford.edu/pub/papers/google.pdf&embedded=true"
+                frameborder="0"></iframe>-->
+                <object class="pdf-viewer" data="http://infolab.stanford.edu/pub/papers/google.pdf" type="application/pdf" width="100%" height="100%">
+                    <p>Alternative text - include a link <a href="http://infolab.stanford.edu/pub/papers/google.pdf">to the PDF!</a></p>
+                </object>
+            </div>
+
+            <div class="mdl-cell mdl-cell--2-col mdl-color--white mdl-shadow--4dp mdl-color-text--grey-800">
+                <form class="tag-form" action="#">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="sample3" v-model="newTag" @keyup.enter="addTag">
+                        <label class="mdl-textfield__label" for="sample3">Tag...</label>
+                    </div>
+                </form>
+                <ul class="demo-list-control mdl-list">
+                    <li class="mdl-list__item" v-for="(index,tag) in paperTags" id="list-item-{{index}}">
+                        <span class="mdl-list__item-primary-content">
+                            <i class="material-icons  mdl-list__item-icon">label</i>
+                            {{tag}}
+                        </span>
+                        <span class="mdl-list__item-secondary-action">
+                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="list-checkbox-{{ index }}" >
+                                <input type="checkbox" id="list-checkbox-{{ index }}"  class="mdl-checkbox__input" value="{{tag}}" v-model="selectedTags" />
+                            </label>
+                        </span>
+                    </li>
+                </ul>
             </div>
         </div>
     </main>

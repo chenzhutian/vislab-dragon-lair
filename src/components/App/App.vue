@@ -14,7 +14,14 @@
     }
 </style>
 <style scoped>
-    .demo-main {
+    .page-ribbon {
+        width: 100%;
+        height: 40vh;
+        background-color: #3F51B5;
+        flex-shrink: 0;
+    }
+    
+    .page-main {
         margin-top: -35vh;
         flex-shrink: 0;
     }
@@ -25,16 +32,19 @@
         margin: 0 auto;
     }
     
-    .page-ribbon {
-        width: 100%;
-        height: 40vh;
-        background-color: #3F51B5;
-        flex-shrink: 0;
+    .paper-content {
+        border-radius: 2px;
+        padding: 80px 56px 50px 56px;
+        /*margin-bottom: 80px;*/
     }
     
-    .demo-content {
-        border-radius: 2px;
-        padding: 80px 56px;
-        margin-bottom: 80px;
+    .pdf-viewer {
+        width: 100%;
+        height: 95vh
     }
+    
+    .tag-form{
+        margin: 20px 20px 20px 20px;
+    }
+    
 </style>
