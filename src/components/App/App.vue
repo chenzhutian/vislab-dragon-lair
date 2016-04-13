@@ -43,8 +43,22 @@
         height: 95vh
     }
     
-    .tag-form{
+    .tag-form {
         margin: 20px 20px 20px 20px;
+        text-align: center;
     }
     
+    .tag-form .commit-button {
+        max-width: 200px;
+        width: 100%;
+    }
+    
+    .tag-form .mdl-snackbar {
+        left: initial;
+        transform: translate(-25%, 80px)
+    }
+    
+    .tag-form .mdl-snackbar--active {
+        transform: translate(-25%, 0);
+    }
 </style>
