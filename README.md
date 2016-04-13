@@ -1,6 +1,7 @@
 # vislab-paper-warehouse
 
-> no description now
+> for dev need to modify scss of material-design-lite
+> change $image_path from '/image' to './image' in 'material-design-lite/src/_variables.scss'
 
 ## Build Setup
 
