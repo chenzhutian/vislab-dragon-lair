@@ -64,15 +64,13 @@
     
     .tag-transition {
         transition: all .3s ease;
-        height: 30px;
-        padding: 10px;
-        background-color: #eee;
-        overflow: hidden;
     }
     
-    .tag-enter .tag-level {
+    .tag-enter,
+    .tag-leave {
+        min-height: 0;
         height: 0;
-        padding: 0 10px;
-        opacity: 0;
+        padding-top: 0;
+        padding-bottom: 0;
     }
 </style>

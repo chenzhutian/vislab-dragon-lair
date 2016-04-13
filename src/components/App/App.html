@@ -52,7 +52,7 @@
                 </form>
 
                 <ul class="demo-list-control mdl-list">
-                    <li class="mdl-list__item" v-for="(index,tag) in paperTags" id="list-item-{{index}}">
+                    <li class="mdl-list__item" transition="tag" v-for="(index,tag) in paperTags" id="list-item-{{index}}">
                         <span class="mdl-list__item-primary-content">
                             <i class="material-icons  mdl-list__item-icon">{{tag | tagCheckBoxIcon selectedTags}}</i>
                             {{tag}}
