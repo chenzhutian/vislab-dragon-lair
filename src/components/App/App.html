@@ -42,8 +42,8 @@
                         <input class="mdl-textfield__input" type="text" id="sample3" v-model="newTag" @keyup.enter="addTag">
                         <label class="mdl-textfield__label" for="sample3">Enter to add new Tag...</label>
                     </div>
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent commit-button">
-                        Update
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent commit-button" @click="commitSeletcedTags">
+                        Commit
                     </button>
                     <div id="tag-snackbar" class="mdl-js-snackbar mdl-snackbar">
                         <div class="mdl-snackbar__text"></div>

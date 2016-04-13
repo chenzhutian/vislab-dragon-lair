@@ -25,8 +25,16 @@ export default {
         };
     },
     methods: {
-        updatePaperInfo() {
-
+        commitSeletcedTags() {
+            this.paperTags = this.selectedTags.slice(0);
+            this.paperTagsHash = {};
+            for (let i = 0, len = this.paperTags.length; i < len; ++i) {
+                this.paperTagsHash[this.paperTags[i]] = true;
+            }
+            // TODO this can be optimized
+            this.$nextTick(() => {
+                mdl.upgradeDom();
+            });
         },
         removeLastTag() {
             if (!this.canRemoveLastTag) return;
@@ -47,7 +55,7 @@ export default {
                     this.canRemoveLastTag = true;
                     this.snackbar.MaterialSnackbar.showSnackbar({
                         message: 'Tag added.',
-                        //timeout: 200000,
+                        // timeout: 200000,
                         actionHandler: this.removeLastTag,
                         actionText: 'Undo'
                     });
