@@ -1,8 +1,5 @@
 # vislab-paper-warehouse
 
-> for dev need to modify scss of material-design-lite
-> change $image_path from '/image' to './image' in 'material-design-lite/src/_variables.scss'
-
 ## Build Setup
 
 ``` bash
@@ -11,6 +8,9 @@ npm install
 
 # serve with hot reload at localhost:8080
 npm run dev
+
+> for dev, you need to modify a scss file of material-design-lite
+> change $image_path from '/image' to './image' in 'material-design-lite/src/_variables.scss'
 
 # build for production with minification
 npm run build
