@@ -1,0 +1,21 @@
+{
+    "root": true,
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module"
+    },
+    "extends": "airbnb/base",
+    "plugins": [
+        "html"
+    ],
+    "rules": {
+        "semi": 2,
+        "indent": [
+            "error",
+            4,
+            {
+                "SwitchCase": 1
+            }
+        ],
+    }
+}
