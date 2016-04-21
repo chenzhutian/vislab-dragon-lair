@@ -1,5 +1,5 @@
 // https://github.com/shelljs/shelljs
-require('shelljs/global');
+const shelljs = require('shelljs/global');
 env.NODE_ENV = 'production';
 
 const path = require('path');
@@ -18,9 +18,9 @@ const spinner = ora('building for production...');
 spinner.start();
 
 const assetsPath = path.join(config.build.assetsRoot, config.build.assetsSubDirectory);
-rm('-rf', assetsPath);
-mkdir('-p', assetsPath);
-cp('-R', 'static/', assetsPath);
+shelljs.rm('-rf', assetsPath);
+shelljs.mkdir('-p', assetsPath);
+shelljs.cp('-R', 'static/', assetsPath);
 
 webpack(webpackConfig, (err, stats) => {
     spinner.stop();

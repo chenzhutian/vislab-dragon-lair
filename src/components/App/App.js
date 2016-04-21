@@ -4,6 +4,7 @@ import 'material-design-lite/src/material-design-lite.scss';
 // components
 import SearchBox from './../SearchBox/SearchBox.vue';
 import PaperCard from './../PaperCard/PaperCard.vue';
+import TagPanel from './../TagPanel/TagPanel.vue';
 
 export default {
     ready() {
@@ -14,6 +15,7 @@ export default {
     components: {
         PaperCard,
         SearchBox,
+        TagPanel,
     },
     data() {
         return {
