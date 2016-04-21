@@ -1,15 +1,13 @@
 <section class="mdl-grid search-box mdl-grid--no-spacing">
     <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
         <div class="mdl-card__actions mdl-card--border">
-            <form action="#">
-                <label class="mdl-button mdl-js-button mdl-button--icon" for="search-text-input">
+            <label class="mdl-button mdl-js-button mdl-button--icon" for="search-text-input">
                     <i class="material-icons">search</i>
                 </label>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" id="search-text-input">
-                    <label class="mdl-textfield__label" for="search-text-input">Text...</label>
-                </div>
-            </form>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" v-model="searchText" @keyup.enter.stop.prevent.self="searchPapers" id="search-text-input" lazy>
+                <label class="mdl-textfield__label" for="search-text-input">Search Papers</label>
+            </div>
         </div>
     </div>
 </section>
