@@ -9,11 +9,14 @@ export default {
             twoWay: true,
         },
     },
-    computed: {
-        // test: function () { console.log(this); return this.paperData; },
-        // paperID: () => this.paperData.id,
-        // paperTitle: () => this.paperData.title,
-        // paperTags: () => this.paperData.tags,
-        // paperAuthors: () => this.paperData.authors,
+    data() {
+        return {
+            showPdf: false,
+        };
+    },
+    methods: {
+        triggerPdf() {
+            this.showPdf = !this.showPdf;
+        },
     },
 };

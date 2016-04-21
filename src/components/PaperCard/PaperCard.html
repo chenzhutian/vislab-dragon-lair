@@ -5,11 +5,11 @@
         </div>
         <div class="mdl-card__supporting-text">{{paperData.authors.join(';')}}</div>
         <div class="mdl-card__actions mdl-card--border">
-            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-      Get Started
-    </a>
+            <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" @click="triggerPdf">
+      {{showPdf ? 'Collapse':'Get Detail'}}
+    </button>
         </div>
-        <div class="paper-content">
+        <div v-show="showPdf" class="paper-content">
             <object class="pdf-viewer" data="http://infolab.stanford.edu/pub/papers/google.pdf" type="application/pdf" width="100%" height="100%">
                     <p>Alternative text - include a link <a href="http://infolab.stanford.edu/pub/papers/google.pdf">to the PDF!</a></p>
                 </object>
