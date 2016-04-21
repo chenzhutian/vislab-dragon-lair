@@ -9,4 +9,6 @@
     .paper-card .mdl-card {
         min-height: 100px;
     }
+    
+
 </style>

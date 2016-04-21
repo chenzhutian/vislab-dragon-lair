@@ -12,7 +12,9 @@
         background: #ebeff2;
         font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
     }
-    
+</style>
+
+<style scoped>
     .page-ribbon {
         width: 100%;
         height: 40vh;
@@ -29,5 +31,14 @@
         max-width: 1600px;
         width: calc(100% - 16px);
         margin: 0 auto;
+    }
+    
+    .fade-transition {
+        transition: opacity .3s ease;
+    }
+    
+    .fade-enter,
+    .fade-leave {
+        opacity: 0;
     }
 </style>
