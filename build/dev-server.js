@@ -1,3 +1,4 @@
+'use strict';
 const express = require('express');
 const webpack = require('webpack');
 const config = require('../config');

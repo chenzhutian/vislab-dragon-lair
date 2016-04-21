@@ -1,6 +1,8 @@
+'use strict';
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-module.exports = (options = {}) => {
+module.exports = (options) => {
+    const tempOption = options || {};
     // generate loader string to be used with extract text plugin
     function generateLoaders(loaders) {
         const sourceLoader = loaders.map(loader => {
@@ -13,10 +15,10 @@ module.exports = (options = {}) => {
                 newLoader = `${newLoader}-loader`;
                 extraParamChar = '?';
             }
-            return `${newLoader}${options.sourceMap ? `${extraParamChar}sourceMap` : ''}`;
+            return `${newLoader}${tempOption.sourceMap ? `${extraParamChar}sourceMap` : ''}`;
         }).join('!');
 
-        if (options.extract) {
+        if (tempOption.extract) {
             return ExtractTextPlugin.extract('vue-style-loader', sourceLoader);
         }
         return ['vue-style-loader', sourceLoader].join('!');
