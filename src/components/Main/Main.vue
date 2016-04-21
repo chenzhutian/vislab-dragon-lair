@@ -3,17 +3,6 @@
 <script src="./Main.js"></script>
 
 <style scoped>
-
-    .paper-content {
-        border-radius: 2px;
-        padding: 80px 56px 50px 56px;
-        /*margin-bottom: 80px;*/
-    }
-    
-    .pdf-viewer {
-        width: 100%;
-        height: 95vh
-    }
     
     .tag-form {
         margin: 20px 20px 20px 20px;

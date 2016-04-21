@@ -10,5 +10,12 @@
         min-height: 100px;
     }
     
-
+    .paper-content {
+        padding: 20px 16px 40px 16px;
+    }
+    
+    .pdf-viewer {
+        width: 100%;
+        height: 95vh
+    }
 </style>
