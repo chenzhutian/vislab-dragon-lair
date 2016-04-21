@@ -2,6 +2,7 @@ import mdl from 'material-design-lite/material.js';
 import 'material-design-lite/src/material-design-lite.scss';
 
 // components
+import SearchBox from './../SearchBox/SearchBox.vue';
 import PaperCard from './../PaperCard/PaperCard.vue';
 
 export default {
@@ -12,6 +13,7 @@ export default {
     },
     components: {
         PaperCard,
+        SearchBox,
     },
     data() {
         return {
