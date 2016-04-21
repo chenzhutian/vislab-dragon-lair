@@ -8,5 +8,5 @@ Vue.filter('tagCheckBoxIcon', tagCheckBoxIcon);
 /* eslint-disable no-new */
 new Vue({
     el: 'body',
-    components: { App }
+    components: { App },
 });

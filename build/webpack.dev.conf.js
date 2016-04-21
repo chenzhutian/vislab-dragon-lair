@@ -1,10 +1,10 @@
-var webpack = require('webpack');
-var merge = require('webpack-merge');
-var baseWebpackConfig = require('./webpack.base.conf');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+const merge = require('webpack-merge');
+const baseWebpackConfig = require('./webpack.base.conf');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // add hot-reload related code to entry chunks
-Object.keys(baseWebpackConfig.entry).forEach(function(name) {
+Object.keys(baseWebpackConfig.entry).forEach((name) => {
     baseWebpackConfig.entry[name] = ['./build/dev-client'].concat(baseWebpackConfig.entry[name]);
 });
 
@@ -13,8 +13,8 @@ module.exports = merge(baseWebpackConfig, {
     devtool: '#eval-source-map',
     module: {
         loaders: [
-            { test: /\.scss$/, loaders: ['style', 'css', 'sass'] }
-        ]
+            { test: /\.scss$/, loaders: ['style', 'css', 'sass'] },
+        ],
     },
     plugins: [
         // https://github.com/glenjamin/webpack-hot-middleware#installation--usage
@@ -25,7 +25,7 @@ module.exports = merge(baseWebpackConfig, {
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: 'index.html',
-            inject: true
-        })
-    ]
+            inject: true,
+        }),
+    ],
 });

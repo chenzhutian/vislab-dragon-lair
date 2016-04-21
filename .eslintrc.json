@@ -9,7 +9,6 @@
         "html"
     ],
     "rules": {
-        "semi": 2,
         "indent": [
             "error",
             4,
