@@ -1,5 +1,5 @@
 import mdl from 'material-design-lite/material.js';
-import { commitTags } from '../../service/netservice.js';
+import { commitTags as $commitTags } from '../../service/netservice.js';
 
 
 export default {
@@ -51,7 +51,7 @@ export default {
             // clone this.selectedtags to this.papertags
             this.paperTags = this.selectedTags.slice(0);
 
-            commitTags(this.paperID, this.paperTags, response => {
+            $commitTags(this.paperID, this.paperTags, response => {
                 if (response.status === 200 && response.data) {
                     // TODO trigger a snackbar here
                     console.log('commit sucess');
