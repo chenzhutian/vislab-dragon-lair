@@ -4,6 +4,8 @@
     .search-box {
         max-width: 860px;
         margin-bottom: 48px;
+        margin-left: auto;
+        margin-right: auto;
     }
     
     .search-box .mdl-card {

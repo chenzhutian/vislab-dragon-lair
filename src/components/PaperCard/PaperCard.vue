@@ -3,11 +3,14 @@
 <style scope>
     .paper {
         position: relative;
+        width: 100%;
     }
     
     .paper-card {
         max-width: 860px;
         margin-bottom: 48px;
+        margin-left: auto;
+        margin-right: auto;
     }
     
     .paper-card .mdl-card {

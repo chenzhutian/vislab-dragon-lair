@@ -3,11 +3,7 @@
 <style scoped>
     .tag-panel {
         position: absolute;
-        width: 100%;
         top: 0;
-    }
-    
-    .tag-panel .mdl-cell {
         margin-left: 82.3%;
     }
     

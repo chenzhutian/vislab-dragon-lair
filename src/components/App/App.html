@@ -27,9 +27,10 @@
     </div>
     <div class="page-ribbon"></div>
     <main class="page-main mdl-layout__content">
-        <div class="page-content">
+        <div class="page-content mdl-grid">
             <!-- Your content goes here -->
             <search-box :papers-data.sync="papersData"></search-box>
+            <upload-panel></upload-panel>
             <paper-card v-for="paper in papersData" :paper-data.sync="paper" transition="fade" transition-mode="out-in">
             </paper-card>
             <!--<paper-card></paper-card>-->
