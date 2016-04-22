@@ -21,15 +21,16 @@
                     Upload File
                 </button>
                 <input type="file" id="upload-input" @change.stop.prevent="getUploadFile">
-      
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" @click="uploadFile">
                     Commit
                 </button>
             </div>
         </div>
     </div>
     <!-- Colored FAB button with ripple -->
-    <button class="animated-fab mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" :class="{'animated-fab-enter':showDialog}" @click="triggerShowDialog">
+    <button class="animated-fab mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" :class="{'animated-fab-enter':showDialog}"
+        @click="triggerShowDialog">
         <i class="material-icons">add</i>
     </button>
 </section>

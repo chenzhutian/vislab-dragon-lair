@@ -1,8 +1,10 @@
+import { uploadImage as $uploadImage} from '../../service/netservice.js';
+
 export default {
     data() {
         return {
             showDialog: false,
-            uploadFile: null,
+            file: null,
         };
     },
     methods: {
@@ -15,7 +17,12 @@ export default {
         getUploadFile(event) {
             console.log(event);
             console.log(event.srcElement.files);
-            console.log(this.uploadFile);
+            this.file = event.srcElement.files[0];
+        },
+        uploadFile() {
+            $uploadImage(this.file, { title: 'adsf', authors: ['asdf', '123'] }, response => {
+                console.log(response);
+            });
         },
     },
 };
