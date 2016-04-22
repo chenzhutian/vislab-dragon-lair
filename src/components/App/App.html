@@ -30,7 +30,6 @@
         <div class="page-content">
             <!-- Your content goes here -->
             <search-box :papers-data.sync="papersData"></search-box>
-            <tag-panel></tag-panel>
             <paper-card v-for="paper in papersData" :paper-data.sync="paper" transition="fade" transition-mode="out-in">
             </paper-card>
             <!--<paper-card></paper-card>-->

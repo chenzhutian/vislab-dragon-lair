@@ -28,7 +28,6 @@
     }
     
     .page-content {
-        max-width: 1600px;
         width: calc(100% - 16px);
         margin: 0 auto;
     }

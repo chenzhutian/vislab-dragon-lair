@@ -1,4 +1,10 @@
+// component
+import TagPanel from '../TagPanel/TagPanel.vue';
+
 export default {
+    components: {
+        TagPanel,
+    },
     props: {
         paperData: {
             coerce: value => {

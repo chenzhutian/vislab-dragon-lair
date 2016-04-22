@@ -1,6 +1,10 @@
 <template src="./PaperCard.html"></template>
 <script src="./PaperCard.js"></script>
 <style scope>
+    .paper {
+        position: relative;
+    }
+    
     .paper-card {
         max-width: 860px;
         margin-bottom: 48px;

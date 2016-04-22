@@ -1,18 +1,21 @@
-<section class="mdl-grid paper-card mdl-grid--no-spacing">
-    <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
-        <div class="mdl-card__title">
-            <h2 class="mdl-card__title-text">{{paperData.title}}</h2>
-        </div>
-        <div class="mdl-card__supporting-text">{{paperData.year+', '+paperData.authors.join(';')}}</div>
-        <div class="mdl-card__actions mdl-card--border">
-            <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" @click="triggerPdf">
+<section class="paper">
+    <section class="mdl-grid paper-card mdl-grid--no-spacing">
+        <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">{{paperData.title}}</h2>
+            </div>
+            <div class="mdl-card__supporting-text">{{paperData.year+', '+paperData.authors.join(';')}}</div>
+            <div class="mdl-card__actions mdl-card--border">
+                <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" @click="triggerPdf">
       {{showPdf ? 'Collapse':'Get Detail'}}
     </button>
-        </div>
-        <div v-show="showPdf" class="paper-content">
-            <object class="pdf-viewer" data="http://infolab.stanford.edu/pub/papers/google.pdf" type="application/pdf" width="100%" height="100%">
+            </div>
+            <div v-show="showPdf" class="paper-content">
+                <object class="pdf-viewer" data="http://infolab.stanford.edu/pub/papers/google.pdf" type="application/pdf" width="100%" height="100%">
                     <p>Alternative text - include a link <a href="http://infolab.stanford.edu/pub/papers/google.pdf">to the PDF!</a></p>
                 </object>
+            </div>
         </div>
-    </div>
+    </section>
+    <tag-panel :paper-id.sync="paperData.id" :paper-tags.sync="paperData.tags"></tag-panel>
 </section>
