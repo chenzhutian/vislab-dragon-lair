@@ -44,6 +44,10 @@
         text-align: right;
     }
     
+    #upload-input {
+        display: none;
+    }
+    
     .animated-fab {
         margin-left: 80%;
         transition: .2s ease all;

@@ -17,9 +17,11 @@
                 <label class="mdl-textfield__label" for="upload-authors">Authors(optional)</label>
             </div>
             <div class="upload-button-group">
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" @click="openUploadFileDialog">
                     Upload File
                 </button>
+                <input type="file" id="upload-input" @change.stop.prevent="getUploadFile">
+      
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
                     Commit
                 </button>
