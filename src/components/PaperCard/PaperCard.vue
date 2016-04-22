@@ -24,4 +24,16 @@
         width: 100%;
         height: 95vh
     }
+    
+    .vertical-expand-transition {
+        transition: all .5s ease;
+        max-height: 95vh;
+    }
+    
+    .vertical-expand-enter,
+    .vertical-expand-leave{
+        padding-top: 0;
+        padding-bottom:0;
+        max-height: 0;
+    }
 </style>

@@ -10,7 +10,7 @@
       {{showPdf ? 'Collapse':'Get Detail'}}
     </button>
             </div>
-            <div v-show="showPdf" class="paper-content">
+            <div v-show="showPdf" class="paper-content" transition="vertical-expand">
                 <object class="pdf-viewer" data="http://infolab.stanford.edu/pub/papers/google.pdf" type="application/pdf" width="100%" height="100%">
                     <p>Alternative text - include a link <a href="http://infolab.stanford.edu/pub/papers/google.pdf">to the PDF!</a></p>
                 </object>
