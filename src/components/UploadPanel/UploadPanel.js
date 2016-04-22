@@ -1,4 +1,4 @@
-import { uploadImage as $uploadImage} from '../../service/netservice.js';
+import { uploadImage as $uploadImage } from '../../service/netservice.js';
 
 export default {
     data() {
@@ -15,8 +15,6 @@ export default {
             this.$el.querySelector('#upload-input').click();
         },
         getUploadFile(event) {
-            console.log(event);
-            console.log(event.srcElement.files);
             this.file = event.srcElement.files[0];
         },
         uploadFile() {
