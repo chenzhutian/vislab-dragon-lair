@@ -5,16 +5,24 @@
         </div>
         <div class="upload-form mdl-card__supporting-text">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="text" id="upload-title">
-                <label class="mdl-textfield__label" for="upload-title">Title</label>
+                <input class="mdl-textfield__input" type="text" id="resource-title" v-model="resourceTitle">
+                <label class="mdl-textfield__label" for="resource-title">Title</label>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="text" id="upload-tags">
-                <label class="mdl-textfield__label" for="upload-tags">Tags</label>
+                <input class="mdl-textfield__input" type="text" id="resource-tags" v-model="resourceTags">
+                <label class="mdl-textfield__label" for="resource-tags">Tags</label>
+            </div>
+            <div class="mdl-textfield optional-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="resource-authors" v-model="resourceAuthors">
+                <label class="mdl-textfield__label" for="resource-authors">Authors(optional)</label>
+            </div>
+            <div class="mdl-textfield optional-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="resource-url" v-model="resourceUrl">
+                <label class="mdl-textfield__label" for="resource-url">Url(optional)</label>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="text" id="upload-authors">
-                <label class="mdl-textfield__label" for="upload-authors">Authors(optional)</label>
+                <input class="mdl-textfield__input" type="text" id="resource-description" v-model="resourceDescription">
+                <label class="mdl-textfield__label" for="resource-description">Description(optional)</label>
             </div>
             <div class="upload-button-group">
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" @click="openUploadFileDialog">

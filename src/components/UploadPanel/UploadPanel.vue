@@ -10,9 +10,13 @@
     
     .upload-dialog {}
     
+    .upload-dialog .mdl-card__title{
+        padding-bottom:0;
+    }
+    
     .upload-dialog.expand-transition {
         transition: .6s ease all;
-        max-height: 50vh;
+        max-height: 60vh;
     }
     
     .upload-dialog.expand-enter,
@@ -31,12 +35,15 @@
     .upload-form {
         margin: 0 auto;
         padding-bottom: 48px;
-        padding-top: 28px;
     }
     
     .upload-form .mdl-textfield {
         width: 100%;
         max-width: 580px;
+    }
+    
+    .upload-form .optional-textfield{
+        width:48%;
     }
     
     .upload-button-group {
@@ -50,7 +57,7 @@
     
     .animated-fab {
         margin-left: 80%;
-        transition: .2s ease all;
+        transition: .6s ease all;
     }
     
     .animated-fab-enter {
