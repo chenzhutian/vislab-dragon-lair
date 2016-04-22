@@ -28,12 +28,13 @@
     
     .tag-transition {
         transition: all .3s ease;
+        max-height: 100vh;
     }
     
     .tag-enter,
     .tag-leave {
         min-height: 0;
-        height: 0;
+        max-height: 0;
         padding-top: 0;
         padding-bottom: 0;
     }

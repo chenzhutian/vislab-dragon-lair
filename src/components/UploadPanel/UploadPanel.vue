@@ -10,6 +10,19 @@
     
     .upload-dialog {}
     
+    .upload-dialog.expand-transition {
+        transition: .6s ease all;
+        max-height: 50vh;
+    }
+    
+    .upload-dialog.expand-enter,
+    .upload-dialog.expand-leave {
+        width: 0;
+        max-height: 0;
+        min-height: 0;
+        margin-left: 80%;
+    }
+    
     .upload-header {
         width: 100%;
         min-height: 48px;
