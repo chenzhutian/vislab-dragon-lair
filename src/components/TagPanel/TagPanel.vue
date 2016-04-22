@@ -26,13 +26,13 @@
         transform: translate(-25%, 0);
     }
     
-    .tag-transition {
+    .vertical-expand-transition {
         transition: all .5s ease;
         max-height: 10vh;
     }
     
-    .tag-enter,
-    .tag-leave {
+    .vertical-expand-enter,
+    .vertical-expand-leave {
         min-height: 0;
         max-height: 0;
         padding-top: 0;
