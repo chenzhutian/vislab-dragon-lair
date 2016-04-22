@@ -4,9 +4,9 @@
             <h2 class="mdl-card__title-text"> Upload Resource</h2>
         </div>
         <div class="upload-form mdl-card__supporting-text">
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="text" id="resource-title" v-model="resourceTitle">
-                <label class="mdl-textfield__label" for="resource-title">Title</label>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="resource-title">
+                <input class="mdl-textfield__input" type="text" id="resource-title-input" v-model="resourceTitle">
+                <label class="mdl-textfield__label" for="resource-title-input">Title</label>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input" type="text" id="resource-tags" v-model="resourceTags">
@@ -30,7 +30,7 @@
                 </button>
                 <input type="file" id="upload-input" @change.stop.prevent="getUploadFile">
 
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" @click="uploadFile">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" @click="uploadFile" :disabled="!fileToBeUploaded">
                     Commit
                 </button>
             </div>

@@ -1,3 +1,4 @@
+import mdl from 'material-design-lite/material.js';
 import { uploadImage as $uploadImage } from '../../service/netservice.js';
 
 export default {
@@ -30,6 +31,8 @@ export default {
         },
         getUploadFile(event) {
             this.fileToBeUploaded = event.srcElement.files[0];
+            this.resourceTitle = this.fileToBeUploaded.name;
+            this.$el.querySelector('#resource-title').classList.add('is-dirty');
         },
         uploadFile() {
             if (!this.resourceTitle || !this.resourceTitle.length) {
