@@ -28,7 +28,7 @@
     
     .tag-transition {
         transition: all .3s ease;
-        max-height: 100vh;
+        max-height: 10vh;
     }
     
     .tag-enter,

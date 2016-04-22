@@ -33,13 +33,21 @@ export default {
             newTag: null,
             selectedTags: [],
             canRemoveLastTag: false,
+            isCommiting: false,
         };
     },
     watch: {
-        paperTags(value) { this.selectedTags = value; },
+        paperTags(value) {
+            if (!this.isCommiting) {
+                this.selectedTags = value.slice(0);
+            } else {
+                this.isCommiting = false;
+            }
+        },
     },
     methods: {
         commitSeletcedTags() {
+            this.isCommiting = true;
             // clone this.selectedtags to this.papertags
             this.paperTags = this.selectedTags.slice(0);
 
