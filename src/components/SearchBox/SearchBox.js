@@ -5,7 +5,7 @@ export default {
         papersData: {
             type: Array,
             validator: value => Array.isArray(value),
-            towWay: true,
+            twoWay: true,
         },
     },
     data() {

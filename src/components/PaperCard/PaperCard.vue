@@ -4,13 +4,12 @@
     .paper {
         position: relative;
         width: 100%;
+        margin-bottom: 48px;
     }
     
     .paper-card {
         max-width: 860px;
-        margin-bottom: 48px;
-        margin-left: auto;
-        margin-right: auto;
+        margin: 0 auto;
     }
     
     .paper-card .mdl-card {

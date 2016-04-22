@@ -2,14 +2,13 @@
 <script src="./SearchBox.js"></script>
 <style scope>
     .search-box {
-        max-width: 860px;
         margin-bottom: 48px;
-        margin-left: auto;
-        margin-right: auto;
     }
     
     .search-box .mdl-card {
         min-height: 0;
+        max-width: 860px;
+        margin: 0 auto;
     }
     
     .search-box .mdl-textfield {
