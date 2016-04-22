@@ -27,7 +27,7 @@
     }
     
     .tag-transition {
-        transition: all .3s ease;
+        transition: all .5s ease;
         max-height: 10vh;
     }
     
