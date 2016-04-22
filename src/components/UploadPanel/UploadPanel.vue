@@ -3,8 +3,9 @@
 <style scoped>
     .upload-panel {
         position: fixed;
-        bottom: 48px;
-        right: 48px;
+        bottom: 2vh;
+        right: 1vw;
+        z-index: 999;
     }
     
     .upload-dialog {}
@@ -15,7 +16,6 @@
     }
     
     .upload-form {
-        max-width: 80%;
         margin: 0 auto;
         padding-bottom: 48px;
         padding-top: 28px;
@@ -23,5 +23,21 @@
     
     .upload-form .mdl-textfield {
         width: 100%;
+        max-width: 580px;
+    }
+    
+    .upload-button-group {
+        width: 100%;
+        text-align: right;
+    }
+    
+    .animated-fab {
+        margin-left: 80%;
+        transition: .2s ease all;
+    }
+    
+    .animated-fab-enter {
+        transform: rotate(225deg);
+        box-shadow: -3px -3px 10px rgba(0, 0, 0, .25);
     }
 </style>
