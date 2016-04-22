@@ -8,7 +8,7 @@
     .search-box .mdl-card {
         min-height: 0;
         max-width: 860px;
-        margin: 0 auto;
+        margin: 0;
     }
     
     .search-box .mdl-textfield {

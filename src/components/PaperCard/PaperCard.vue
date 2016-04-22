@@ -8,12 +8,13 @@
     }
     
     .paper-card {
-        max-width: 860px;
-        margin: 0 auto;
+        margin: 0;
+        width: 100%;
     }
     
     .paper-card .mdl-card {
         min-height: 100px;
+        max-width: 860px;
     }
     
     .paper-content {
@@ -31,9 +32,9 @@
     }
     
     .vertical-expand-enter,
-    .vertical-expand-leave{
+    .vertical-expand-leave {
         padding-top: 0;
-        padding-bottom:0;
+        padding-bottom: 0;
         max-height: 0;
     }
 </style>

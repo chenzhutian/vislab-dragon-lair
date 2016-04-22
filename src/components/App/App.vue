@@ -29,7 +29,6 @@
     
     .page-content {
         width: calc(100% - 16px);
-        margin: 0 auto;
     }
     
     .fade-transition {

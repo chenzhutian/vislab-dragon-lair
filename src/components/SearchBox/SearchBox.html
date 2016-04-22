@@ -1,11 +1,13 @@
-<section class="search-box mdl-cell mdl-cell--12-col mdl-grid--no-spacing">
-    <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--8-col">
+<section class="search-box mdl-cell mdl-cell--12-col mdl-grid mdl-grid--no-spacing">
+    <div class="mdl-cell mdl-cell--1-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+    <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--11-col">
         <div class="mdl-card__actions mdl-card--border">
             <label class="mdl-button mdl-js-button mdl-button--icon" for="search-text-input">
                     <i class="material-icons">search</i>
                 </label>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="text" v-model="searchText" @keyup.enter.stop.prevent.self="searchPapers" id="search-text-input" lazy>
+                <input class="mdl-textfield__input" type="text" v-model="searchText" @keyup.enter.stop.prevent.self="searchPapers" id="search-text-input"
+                    lazy>
                 <label class="mdl-textfield__label" for="search-text-input">Search Papers</label>
             </div>
         </div>
