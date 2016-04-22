@@ -1,4 +1,6 @@
 import mdl from 'material-design-lite/material.js';
+import { commitTags } from '../../service/netservice.js';
+
 
 export default {
     ready() {
@@ -40,6 +42,14 @@ export default {
         commitSeletcedTags() {
             // clone this.selectedtags to this.papertags
             this.paperTags = this.selectedTags.slice(0);
+
+            commitTags(this.paperID, this.paperTags, response => {
+                if (response.status === 200 && response.data) {
+                    // TODO trigger a snackbar here
+                    console.log('commit sucess');
+                }
+            });
+
             // TODO this can be optimized by controlling the upgrade dom
             this.$nextTick(() => {
                 mdl.upgradeDom();

@@ -17,5 +17,5 @@
             </div>
         </div>
     </section>
-    <tag-panel :paper-id.sync="paperData.id" :paper-tags.sync="paperData.tags"></tag-panel>
+    <tag-panel v-show="showPdf" :paper-id.sync="paperData.id" :paper-tags.sync="paperData.tags"></tag-panel>
 </section>
