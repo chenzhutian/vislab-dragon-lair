@@ -2,17 +2,16 @@ import mdl from 'material-design-lite/material.js';
 
 export default {
     ready() {
-        for (let i = 0, len = this.paperTags.length; i < len; ++i) {
-            this.paperTagsHash[this.paperTags[i]] = true;
-            this.selectedTags.push(this.paperTags[i]);
-        }
         this.$nextTick(() => {
             mdl.upgradeDom();
         });
         this.snackbar = this.$el.querySelector('#tag-snackbar');
+        // clone this.paperTags to this.selectedTags
+        this.selectedTags = this.paperTags.slice(0);
     },
     props: {
         paperID: {
+            type: String,
             coerce: value => {
                 if (typeof value === 'number') return value.toString();
                 return value;
@@ -20,6 +19,7 @@ export default {
             validator: value => value && value.length,
         },
         paperTags: {
+            type: Array,
             validator: value => Array.isArray(value),
             twoWay: true,
         },
@@ -29,19 +29,18 @@ export default {
     data() {
         return {
             newTag: null,
-            paperTagsHash: {},
             selectedTags: [],
             canRemoveLastTag: false,
         };
     },
+    watch: {
+        paperTags(value) { this.selectedTags = value; },
+    },
     methods: {
         commitSeletcedTags() {
+            // clone this.selectedtags to this.papertags
             this.paperTags = this.selectedTags.slice(0);
-            this.paperTagsHash = {};
-            for (let i = 0, len = this.paperTags.length; i < len; ++i) {
-                this.paperTagsHash[this.paperTags[i]] = true;
-            }
-            // TODO this can be optimized
+            // TODO this can be optimized by controlling the upgrade dom
             this.$nextTick(() => {
                 mdl.upgradeDom();
             });
@@ -49,14 +48,14 @@ export default {
         removeLastTag() {
             if (!this.canRemoveLastTag) return;
             const lastTag = this.paperTags.pop();
-            delete this.paperTagsHash[lastTag];
             this.selectedTags.splice(this.selectedTags.indexOf(lastTag), 1);
             this.canRemoveLastTag = false;
         },
         addTag() {
             if (this.newTag && this.newTag.length) {
-                if (typeof this.paperTagsHash[this.newTag] !== 'undefined') return;
-                this.paperTagsHash[this.newTag] = true;
+                // TODO this can be optimized by using hashmap
+                if (this.paperTags.indexOf(this.newTag) !== -1) return;
+
                 this.paperTags.push(this.newTag);
                 this.selectedTags.push(this.newTag);
                 this.$nextTick(() => {
