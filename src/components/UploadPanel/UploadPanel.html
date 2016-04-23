@@ -30,7 +30,7 @@
                 </button>
                 <input type="file" id="upload-input" @change.stop.prevent="getUploadFile">
 
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" @click="uploadFile" :disabled="!fileToBeUploaded">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" @click="uploadFile" :disabled="cantCommit">
                     Commit
                 </button>
             </div>
@@ -41,4 +41,9 @@
         @click="triggerShowDialog">
         <i class="material-icons">add</i>
     </button>
+    <!-- Toast snackbar -->
+    <div id="toast-snackbar" class="mdl-js-snackbar mdl-snackbar">
+        <div class="mdl-snackbar__text"></div>
+        <button class="mdl-snackbar__action" type="button"></button>
+    </div>
 </section>

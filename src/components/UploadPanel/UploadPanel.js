@@ -1,7 +1,12 @@
-import mdl from 'material-design-lite/material.js';
+// import mdl from 'material-design-lite/material.js';
 import { uploadImage as $uploadImage } from '../../service/netservice.js';
 
 export default {
+    ready() {
+        this.toast = this.$el.querySelector('#toast-snackbar');
+    },
+    // complex object
+    toast: null,
     data() {
         return {
             showDialog: false,
@@ -12,6 +17,11 @@ export default {
             resourceUrl: null,
             resourceDescription: null,
         };
+    },
+    computed: {
+        cantCommit() {
+            return !this.fileToBeUploaded || !this.resourceTags || !this.resourceTags.length;
+        },
     },
     methods: {
         cleanUploadData() {
@@ -31,6 +41,11 @@ export default {
         },
         getUploadFile(event) {
             this.fileToBeUploaded = event.srcElement.files[0];
+            if (!this.fileToBeUploaded) {
+                this.resourceTitle = null;
+                this.$el.querySelector('#resource-title').classList.remove('is-dirty');
+                return;
+            }
             this.resourceTitle = this.fileToBeUploaded.name;
             this.$el.querySelector('#resource-title').classList.add('is-dirty');
         },
@@ -55,8 +70,11 @@ export default {
                 description: this.resourceDescription,
             };
             $uploadImage(this.fileToBeUploaded, resourceInfo, response => {
-                console.log(response);
-                this.cleanUploadData();
+                if (response.data) {
+                    this.cleanUploadData();
+                } else {
+                    this.toast.MaterialSnackbar.showSnackbar({ message: 'Upload Failed' });
+                }
             });
         },
     },
