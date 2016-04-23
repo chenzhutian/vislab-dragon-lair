@@ -1,8 +1,8 @@
 <section class="tag-panel mdl-cell mdl-cell--2-col mdl-color--white mdl-shadow--2dp">
     <div class="tag-form">
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="sample3" v-model="newTag" @keyup.enter="addTag">
-            <label class="mdl-textfield__label" for="sample3">Enter to add new Tag...</label>
+            <input class="mdl-textfield__input" type="text" id="{{resourceId}}-tag-input" v-model="newTag" @keyup.enter="addTag">
+            <label class="mdl-textfield__label" for="{{resourceId}}-tag-input">Enter to add new Tag...</label>
         </div>
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent commit-button" @click="commitSeletcedTags">
                         Commit
@@ -19,8 +19,8 @@
                 {{tag}}
             </span>
             <span class="mdl-list__item-secondary-action">
-                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="list-checkbox-{{ index }}" >
-                    <input type="checkbox" id="list-checkbox-{{ index }}"  class="mdl-checkbox__input" value="{{tag}}" v-model="selectedTags" />
+                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="{{resourceId}}-checkbox-{{ index }}" >
+                    <input type="checkbox" id="{{resourceId}}-checkbox-{{ index }}"  class="mdl-checkbox__input" value="{{tag}}" v-model="selectedTags" />
                 </label>
             </span>
         </li>

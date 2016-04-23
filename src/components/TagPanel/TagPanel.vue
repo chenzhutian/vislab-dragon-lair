@@ -4,7 +4,7 @@
     .tag-panel {
         position: absolute;
         top: 0;
-        margin-left: 82.3%;
+       
     }
     
     .tag-form {

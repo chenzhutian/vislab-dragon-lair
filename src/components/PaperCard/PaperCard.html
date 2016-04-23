@@ -12,12 +12,14 @@
     </button>
             </div>
             <div v-show="showResource" class="paper-content" transition="vertical-expand">
-                <object v-if="_type === 'paper'" class="pdf-viewer" data="http://infolab.stanford.edu/pub/papers/google.pdf" type="application/pdf" width="100%" height="100%">
+                <object v-if="resourceType === 'paper'" class="pdf-viewer" data="http://infolab.stanford.edu/pub/papers/google.pdf" type="application/pdf" width="100%" height="100%">
                     <p>Alternative text - include a link <a href="http://infolab.stanford.edu/pub/papers/google.pdf">to the PDF!</a></p>
                 </object>
-                <img v-if="_type === 'image'" class="img-viewer" src="https://getmdl.io/assets/demos/welcome_card.jpg" alt="Image Resource">
+                <img v-if="resourceType === 'image'" class="img-viewer" src="https://getmdl.io/assets/demos/welcome_card.jpg" alt="Image Resource">
             </div>
         </div>
     </section>
-    <tag-panel v-show="showResource" :resource-id.sync="resourceId" :resource-tags.sync="resourceTags" :resource-type="resourceType"></tag-panel>
+    <tag-panel v-show="showResource" :resource-id.sync="resourceId" :resource-tags.sync="resourceTags" :resource-type="resourceType"
+    transition="right-in"
+    ></tag-panel>
 </section>
