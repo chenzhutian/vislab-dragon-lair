@@ -14,11 +14,10 @@ export default {
         };
     },
     methods: {
-        searchPapers() {
+        searchResource() {
             if (!this.searchText || !this.searchText.length) return;
             $searchResource(this.searchText, responseData => {
                 if (responseData.status === 200) {
-                    console.log(responseData);
                     if (Array.isArray(responseData.data)) {
                         this.resourceData = responseData.data;
                     } else if (typeof responseData.data === 'object') {

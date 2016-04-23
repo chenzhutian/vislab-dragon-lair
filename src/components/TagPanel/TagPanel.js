@@ -57,7 +57,9 @@ export default {
             $commitTags(this.resourceId, this.resourceType, this.resourceTags, response => {
                 if (response.status === 200 && response.data) {
                     // TODO trigger a snackbar here
-                    console.log('commit sucess');
+                    this.snackbar.MaterialSnackbar.showSnackbar({
+                        message: 'commit sucess',
+                    });
                 }
             });
 
