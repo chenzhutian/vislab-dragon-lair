@@ -12,7 +12,7 @@ export default {
         this.selectedTags = this.resourceTags.slice(0);
     },
     props: {
-        resourceID: {
+        resourceId: {
             type: String,
             coerce: value => {
                 if (typeof value === 'number') return value.toString();
@@ -24,6 +24,9 @@ export default {
             type: Array,
             validator: value => Array.isArray(value),
             twoWay: true,
+        },
+        resourceType: {
+            type: String,
         },
     },
     // complex object data
@@ -51,7 +54,7 @@ export default {
             // clone this.selectedtags to this.resourceTags
             this.resourceTags = this.selectedTags.slice(0);
 
-            $commitTags(this.resourceID, this.resourceTags, response => {
+            $commitTags(this.resourceId, this.resourceType, this.resourceTags, response => {
                 if (response.status === 200 && response.data) {
                     // TODO trigger a snackbar here
                     console.log('commit sucess');

@@ -23,9 +23,23 @@ function searchPaper(searchText, callback) {
     });
 }
 
-function commitTags(paperID, tags, callback) {
+function commitTags(resourceId, resourceType, tags, callback) {
+    const url = `${devMainUrl}/modify/tags`;
+    const postData = { id: resourceId, type: resourceType, tags };
+    $http.post(url, postData, {
+        header: {
+            'Content-Type': 'application/json',
+        },
+    }).then(response => {
+        callback(response);
+    }, errResponse => {
+        console.log(errResponse);
+    });
+}
+
+function commitPaperTags(paperId, tags, callback) {
     const url = `${devMainUrl}/modify/paper/tags`;
-    const postData = { paperID, tags };
+    const postData = { paperId, tags };
     $http.post(url, postData, {
         header: {
             'Content-Type': 'application/json',
@@ -59,5 +73,6 @@ export {
 searchResource,
 searchPaper,
 commitTags,
+commitPaperTags,
 uploadImage,
 };

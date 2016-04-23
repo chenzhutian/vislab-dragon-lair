@@ -26,24 +26,32 @@ export default {
         },
     },
     computed: {
-        _type() {
+        resourceType() {
             if (!this.resourceData) return null;
             return this.resourceData._type;
         },
-        title() {
+        resourceTitle() {
             if (!this.resourceData) return '';
             return this.resourceData.title;
         },
-        authors() {
+        resourceAuthors() {
             if (!this.resourceData) return '';
             if (Array.isArray(this.resourceData.authors)) {
                 return this.resourceData.authors.join(';');
             }
             return this.resourceData.authors;
         },
-        year() {
+        resourceYear() {
             if (!this.resourceData) return '';
             return this.resourceData.year;
+        },
+        resourceTags() {
+            if (!this.resourceData) return [];
+            return this.resourceData.tags;
+        },
+        resourceId() {
+            if (!this.resourceData) return null;
+            return this.resourceData._id;
         },
     },
 };
