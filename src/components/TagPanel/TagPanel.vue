@@ -4,7 +4,6 @@
     .tag-panel {
         position: absolute;
         top: 0;
-       
     }
     
     .tag-form {
