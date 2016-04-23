@@ -8,11 +8,11 @@ export default {
             mdl.upgradeDom();
         });
         this.snackbar = this.$el.querySelector('#tag-snackbar');
-        // clone this.paperTags to this.selectedTags
-        this.selectedTags = this.paperTags.slice(0);
+        // clone this.resourceTags to this.selectedTags
+        this.selectedTags = this.resourceTags.slice(0);
     },
     props: {
-        paperID: {
+        resourceID: {
             type: String,
             coerce: value => {
                 if (typeof value === 'number') return value.toString();
@@ -20,7 +20,7 @@ export default {
             },
             validator: value => value && value.length,
         },
-        paperTags: {
+        resourceTags: {
             type: Array,
             validator: value => Array.isArray(value),
             twoWay: true,
@@ -37,7 +37,7 @@ export default {
         };
     },
     watch: {
-        paperTags(value) {
+        resourceTags(value) {
             if (!this.isCommiting) {
                 this.selectedTags = value.slice(0);
             } else {
@@ -48,10 +48,10 @@ export default {
     methods: {
         commitSeletcedTags() {
             this.isCommiting = true;
-            // clone this.selectedtags to this.papertags
-            this.paperTags = this.selectedTags.slice(0);
+            // clone this.selectedtags to this.resourceTags
+            this.resourceTags = this.selectedTags.slice(0);
 
-            $commitTags(this.paperID, this.paperTags, response => {
+            $commitTags(this.resourceID, this.resourceTags, response => {
                 if (response.status === 200 && response.data) {
                     // TODO trigger a snackbar here
                     console.log('commit sucess');
@@ -65,20 +65,20 @@ export default {
         },
         removeLastTag() {
             if (!this.canRemoveLastTag) return;
-            const lastTag = this.paperTags.pop();
+            const lastTag = this.resourceTags.pop();
             this.selectedTags.splice(this.selectedTags.indexOf(lastTag), 1);
             this.canRemoveLastTag = false;
         },
         addTag() {
             if (this.newTag && this.newTag.length) {
                 // TODO this can be optimized by using hashmap
-                if (this.paperTags.indexOf(this.newTag) !== -1) return;
+                if (this.resourceTags.indexOf(this.newTag) !== -1) return;
 
-                this.paperTags.push(this.newTag);
+                this.resourceTags.push(this.newTag);
                 this.selectedTags.push(this.newTag);
                 this.$nextTick(() => {
                     mdl.upgradeElement(this.$el
-                        .querySelector(`#list-item-${(this.paperTags.length - 1)}
+                        .querySelector(`#list-item-${(this.resourceTags.length - 1)}
                          .mdl-js-checkbox`));
                     this.newTag = null;
                     this.canRemoveLastTag = true;

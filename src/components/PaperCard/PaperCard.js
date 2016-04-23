@@ -6,23 +6,44 @@ export default {
         TagPanel,
     },
     props: {
-        paperData: {
+        resourceData: {
             coerce: value => {
                 if (typeof value === 'string') return JSON.parse(value);
                 return value;
             },
-            validator: value => typeof value === 'object' && value.id,
+            validator: value => typeof value === 'object',
             twoWay: true,
         },
     },
     data() {
         return {
-            showPdf: false,
+            showResource: false,
         };
     },
     methods: {
-        triggerPdf() {
-            this.showPdf = !this.showPdf;
+        triggerResource() {
+            this.showResource = !this.showResource;
+        },
+    },
+    computed: {
+        _type() {
+            if (!this.resourceData) return null;
+            return this.resourceData._type;
+        },
+        title() {
+            if (!this.resourceData) return '';
+            return this.resourceData.title;
+        },
+        authors() {
+            if (!this.resourceData) return '';
+            if (Array.isArray(this.resourceData.authors)) {
+                return this.resourceData.authors.join(';');
+            }
+            return this.resourceData.authors;
+        },
+        year() {
+            if (!this.resourceData) return '';
+            return this.resourceData.year;
         },
     },
 };

@@ -5,8 +5,17 @@ Vue.use(VueResource);
 const devMainUrl = '//localhost:3000';
 const $http = Vue.http;
 
-function searchPapers(searchText, callback) {
-    const url = `${devMainUrl}/papers?search=${searchText}`;
+function searchResource(searchText, callback) {
+    const url = `${devMainUrl}/search?search=${searchText}`;
+    $http.get(url).then(response => {
+        callback(response);
+    }, errResponse => {
+        console.log(errResponse);
+    });
+}
+
+function searchPaper(searchText, callback) {
+    const url = `${devMainUrl}/search/paper?search=${searchText}`;
     $http.get(url).then(response => {
         callback(response);
     }, errResponse => {
@@ -15,7 +24,7 @@ function searchPapers(searchText, callback) {
 }
 
 function commitTags(paperID, tags, callback) {
-    const url = `${devMainUrl}/papers/tags`;
+    const url = `${devMainUrl}/modify/paper/tags`;
     const postData = { paperID, tags };
     $http.post(url, postData, {
         header: {
@@ -47,7 +56,8 @@ function uploadImage(file, fileInfo, callback) {
 }
 
 export {
-searchPapers,
+searchResource,
+searchPaper,
 commitTags,
 uploadImage,
 };

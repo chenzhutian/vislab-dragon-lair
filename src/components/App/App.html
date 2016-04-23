@@ -29,9 +29,9 @@
     <main class="page-main mdl-layout__content">
         <div class="page-content mdl-grid">
             <!-- Your content goes here -->
-            <search-box :papers-data.sync="papersData"></search-box>
+            <search-box :resource-data.sync="resourceData"></search-box>
             <upload-panel></upload-panel>
-            <paper-card v-for="paper in papersData" :paper-data.sync="paper" transition="fade" transition-mode="out-in">
+            <paper-card v-for="resource in resourceData" :resource-data.sync="resource" transition="fade" transition-mode="out-in">
             </paper-card>
             <!--<paper-card></paper-card>-->
         </div>

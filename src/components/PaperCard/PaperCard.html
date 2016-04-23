@@ -3,20 +3,21 @@
         <div class="mdl-cell mdl-cell--1-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
         <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--11-col">
             <div class="mdl-card__title">
-                <h2 class="mdl-card__title-text">{{paperData.title}}</h2>
+                <h2 class="mdl-card__title-text">{{title}}</h2>
             </div>
-            <div class="mdl-card__supporting-text">{{paperData.year+', '+paperData.authors.join(';')}}</div>
+            <div class="mdl-card__supporting-text">{{year+', '+authors}}</div>
             <div class="mdl-card__actions mdl-card--border">
-                <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" @click="triggerPdf">
-      {{showPdf ? 'Collapse':'Get Detail'}}
+                <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" @click="triggerResource">
+      {{showResource ? 'Collapse':'Get Detail'}}
     </button>
             </div>
-            <div v-show="showPdf" class="paper-content" transition="vertical-expand">
-                <object class="pdf-viewer" data="http://infolab.stanford.edu/pub/papers/google.pdf" type="application/pdf" width="100%" height="100%">
+            <div v-show="showResource" class="paper-content" transition="vertical-expand">
+                <object v-if="_type === 'paper'" class="pdf-viewer" data="http://infolab.stanford.edu/pub/papers/google.pdf" type="application/pdf" width="100%" height="100%">
                     <p>Alternative text - include a link <a href="http://infolab.stanford.edu/pub/papers/google.pdf">to the PDF!</a></p>
                 </object>
+                <img v-if="_type === 'image'" class="img-viewer" src="https://getmdl.io/assets/demos/welcome_card.jpg" alt="Image Resource">
             </div>
         </div>
     </section>
-    <tag-panel v-show="showPdf" :paper-id.sync="paperData.id" :paper-tags.sync="paperData.tags"></tag-panel>
+    <tag-panel v-show="showResource" :resource-id.sync="resourceData._id" :resource-tags.sync="resourceData.tags"></tag-panel>
 </section>

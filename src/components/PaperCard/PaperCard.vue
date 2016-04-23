@@ -25,6 +25,11 @@
         width: 100%;
         height: 95vh
     }
+    .img-viewer {
+        width:100%;
+        height: auto;
+        max-height: 95vh;
+    }
     
     .vertical-expand-transition {
         transition: all .5s ease;
