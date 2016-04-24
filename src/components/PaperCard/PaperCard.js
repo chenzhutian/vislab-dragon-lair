@@ -53,5 +53,9 @@ export default {
             if (!this.resourceData) return null;
             return this.resourceData._id;
         },
+        resourceLocalSrc() {
+            if (!this.resourceData) return '';
+            return this.resourceData.vislabSrc;
+        },
     },
 };

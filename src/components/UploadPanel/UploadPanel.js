@@ -64,7 +64,7 @@ export default {
             }
             const resourceInfo = {
                 title: this.resourceTitle,
-                tags: this.resourceTags,
+                tags: this.resourceTags.split(';'),
                 authors: this.resourceAuthors,
                 src: this.resourceUrl,
                 description: this.resourceDescription,
