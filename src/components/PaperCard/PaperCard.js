@@ -55,7 +55,9 @@ export default {
         },
         resourceLocalSrc() {
             if (!this.resourceData) return '';
-            return this.resourceData.vislabSrc;
+            return this.resourceData.vislabSrc[0] !== '/'
+                ? `./${this.resourceData.vislabSrc}`
+                : `.${this.resourceData.vislabSrc}`;
         },
     },
 };
