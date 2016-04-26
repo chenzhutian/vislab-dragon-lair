@@ -18,6 +18,7 @@ export default {
     data() {
         return {
             showResource: false,
+            recentAct: 'just for test'
         };
     },
     methods: {

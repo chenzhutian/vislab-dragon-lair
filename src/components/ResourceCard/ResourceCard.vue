@@ -53,4 +53,7 @@
     .right-in-leave {
         margin-left: 100%;
     }
+    .recent-activity-info {
+        margin-left: 70%;
+    }
 </style>
