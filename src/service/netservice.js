@@ -23,6 +23,16 @@ function searchPaper(searchText, callback) {
     });
 }
 
+// add by zhp
+function searchRecentAct(searchCount, callback) {
+    const url = `${devMainUrl}/recentAct/paper?count=${searchCount}`;
+    $http.get(url).then(response => {
+        callback(response);
+    }, errResponse => {
+        console.log(errResponse);
+    });
+}
+
 function commitTags(resourceId, resourceType, tags, callback) {
     const url = `${devMainUrl}/modify/tags`;
     const postData = { id: resourceId, type: resourceType, tags };
@@ -72,6 +82,7 @@ function uploadImage(file, fileInfo, callback) {
 export {
 searchResource,
 searchPaper,
+searchRecentAct,
 commitTags,
 commitPaperTags,
 uploadImage,
