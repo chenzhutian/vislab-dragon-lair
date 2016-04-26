@@ -54,7 +54,7 @@ app.use(hotMiddleware);
 
 // serve pure static assets
 // remove the first '.' in config.build.assetsPublicPath
-const staticPath = config.build.assetsPublicPath.slice(1) + config.build.assetsSubDirectory;
+const staticPath = config.dev.assetsPublicPath + config.dev.assetsSubDirectory;
 app.use(staticPath, express.static('./static'));
 
 module.exports = app.listen(port, (err) => {

@@ -11,6 +11,7 @@ module.exports = merge(baseWebpackConfig, {
     devtool: config.build.productionSourceMap ? '#source-map' : false,
     output: {
         path: config.build.assetsRoot,
+        publicPath: config.build.assetsPublicPath,
         filename: path.join(config.build.assetsSubDirectory, '[name].[chunkhash].js'),
         chunkFilename: path.join(config.build.assetsSubDirectory, '[id].[chunkhash].js'),
     },
@@ -19,6 +20,14 @@ module.exports = merge(baseWebpackConfig, {
             {
                 test: /\.scss$/,
                 loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader'),
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg|woff2?|eot|ttf|otf)(\?.*)?$/,
+                loader: 'url',
+                query: {
+                    limit: 10000,
+                    name: path.join(config.build.assetsSubDirectory, '[name].[hash:7].[ext]'),
+                },
             },
         ],
     },
