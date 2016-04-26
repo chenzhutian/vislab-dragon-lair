@@ -1,5 +1,5 @@
-<template src="./PaperCard.html"></template>
-<script src="./PaperCard.js"></script>
+<template src="./ResourceCard.html"></template>
+<script src="./ResourceCard.js"></script>
 <style scope>
     .paper {
         position: relative;

@@ -19,8 +19,8 @@
             <!-- Your content goes here -->
             <search-box :resource-data.sync="resourceData"></search-box>
             <upload-panel></upload-panel>
-            <paper-card v-for="resource in resourceData" :resource-data.sync="resource" transition="fade" transition-mode="out-in">
-            </paper-card>
+            <resource-card v-for="resource in resourceData" :resource-data.sync="resource" transition="fade" transition-mode="out-in">
+            </resource-card>
         </div>
     </main>
 </div>
