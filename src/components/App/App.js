@@ -3,7 +3,7 @@ import 'material-design-lite/src/material-design-lite.scss';
 
 // components
 import SearchBox from './../SearchBox/SearchBox.vue';
-import PaperCard from './../PaperCard/PaperCard.vue';
+import ResourceCard from './../ResourceCard/ResourceCard.vue';
 import UploadPanel from './../UploadPanel//UploadPanel.vue';
 
 export default {
@@ -13,7 +13,7 @@ export default {
         });
     },
     components: {
-        PaperCard,
+        ResourceCard,
         SearchBox,
         UploadPanel,
     },
