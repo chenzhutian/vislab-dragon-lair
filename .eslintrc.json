@@ -15,6 +15,18 @@
             {
                 "SwitchCase": 1
             }
+        ],
+        "no-param-reassign": [
+            "error",
+            {
+                "props": false
+            }
+        ],
+        "no-unused-vars": [
+            "error",
+            {
+                "args": "none"
+            }
         ]
     }
 }

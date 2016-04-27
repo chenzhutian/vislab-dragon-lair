@@ -36,6 +36,7 @@ webpackConfig.module.loaders.some((loader, i) => {
         loader.include = /test\/unit/;
         return true;
     }
+    return null;
 });
 
 module.exports = config => {
@@ -59,7 +60,7 @@ module.exports = config => {
             dir: './coverage',
             reporters: [
                 { type: 'lcov', subdir: '.' },
-                { type: 'text-summary' }
+                { type: 'text-summary' },
             ],
         },
     });
