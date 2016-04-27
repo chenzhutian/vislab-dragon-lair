@@ -25,7 +25,7 @@ function searchPaper(searchText, callback) {
 
 // add by zhp
 function searchRecentAct(searchCount, callback) {
-    const url = `${devMainUrl}/recentAct/paper?count=${searchCount}`;
+    const url = `${devMainUrl}/activity/paper?count=${searchCount}`;
     $http.get(url).then(response => {
         callback(response);
     }, errResponse => {

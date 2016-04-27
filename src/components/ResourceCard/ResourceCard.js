@@ -18,7 +18,6 @@ export default {
     data() {
         return {
             showResource: false,
-            recentAct: 'just for test'
         };
     },
     methods: {
@@ -59,6 +58,14 @@ export default {
             return this.resourceData.vislabSrc[0] !== '/'
                 ? `./${this.resourceData.vislabSrc}`
                 : `.${this.resourceData.vislabSrc}`;
+        },
+        recentActType(){
+            if (!this.resourceData.recentAct) return null;
+            return this.resourceData.recentAct._type;
+        },
+        recentAct(){
+            //should add more code
+            return recentActType;
         },
     },
 };
