@@ -59,13 +59,13 @@ export default {
                 ? `./${this.resourceData.vislabSrc}`
                 : `.${this.resourceData.vislabSrc}`;
         },
-        recentActType(){
-            if (!this.resourceData.recentAct) return null;
-            return this.resourceData.recentAct._type;
+        activityType() {
+            if (!this.resourceData.activity) return null;
+            return this.resourceData.activity.type;
         },
-        recentAct(){
-            //should add more code
-            return recentActType;
+        activity() {
+            // should add more code
+            return this.activityType;
         },
     },
 };
