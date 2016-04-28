@@ -1,9 +1,9 @@
 import { searchResource as $searchResource } from '../../service/netservice.js';
-import { searchRecentAct as $searchRecentAct } from '../../service/netservice.js';
+import { searchActivity as $searchActivity } from '../../service/netservice.js';
 
 export default {
     ready() {
-        searchRecentAct()
+        searchActivity();
     },
     props: {
         resourceData: {
@@ -15,10 +15,9 @@ export default {
     data() {
         return {
             searchText: '',
-            searchCount: 10,
+            count: 10,
         };
     },
-    
     methods: {
         searchResource() {
             if (!this.searchText || !this.searchText.length) return;
@@ -42,9 +41,9 @@ export default {
                 }
             });
         },
-        //add by zhp
-        searchRecentAct() {
-            $searchRecentAct(this.searchCount, responseData => {
+        // add by zhp
+        searchActivity() {
+            $searchActivity(this.count, responseData => {
                 if (responseData.status === 200) {
                     if (Array.isArray(responseData.data)) {
                         this.resourceData = responseData.data;

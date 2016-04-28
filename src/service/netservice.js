@@ -24,8 +24,8 @@ function searchPaper(searchText, callback) {
 }
 
 // add by zhp
-function searchRecentAct(searchCount, callback) {
-    const url = `${devMainUrl}/activity/paper?count=${searchCount}`;
+function searchActivity(count, callback) {
+    const url = `${devMainUrl}/activity?count=${count}`;
     $http.get(url).then(response => {
         callback(response);
     }, errResponse => {
@@ -82,7 +82,7 @@ function uploadImage(file, fileInfo, callback) {
 export {
 searchResource,
 searchPaper,
-searchRecentAct,
+searchActivity,
 commitTags,
 commitPaperTags,
 uploadImage,
