@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueResource from 'vue-resource';
 Vue.use(VueResource);
 
-const devMainUrl = '//vis.cse.ust.hk/dragon-lair';
+const devMainUrl = '//localhost:7797'; // '//vis.cse.ust.hk/dragon-lair';
 const $http = Vue.http;
 
 function searchResource(searchText, callback) {
