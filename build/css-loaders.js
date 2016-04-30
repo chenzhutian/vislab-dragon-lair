@@ -1,7 +1,6 @@
-'use strict';
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-module.exports = (options = {}) => {
+module.exports = (options) => {
     const tempOption = options || {};
     // generate loader string to be used with extract text plugin
     function generateLoaders(loaders) {

@@ -1,6 +1,7 @@
 const path = require('path');
 const cssLoaders = require('./css-loaders');
 const projectRoot = path.resolve(__dirname, '../');
+const eslintFormatter = require('eslint-friendly-formatter');
 
 module.exports = {
     entry: {
@@ -53,6 +54,6 @@ module.exports = {
         loaders: cssLoaders(),
     },
     eslint: {
-        formatter: require('eslint-friendly-formatter'),
+        formatter: eslintFormatter,
     },
 };
