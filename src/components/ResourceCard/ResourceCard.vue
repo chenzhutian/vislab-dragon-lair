@@ -1,6 +1,6 @@
 <template src="./ResourceCard.html"></template>
 <script src="./ResourceCard.js"></script>
-<style src="./ResourceCard.scss" lang="sass"></style>
+
 <style scope>
     .paper {
         position: relative;
