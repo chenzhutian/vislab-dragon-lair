@@ -27,7 +27,7 @@
     }
     
     .page-main {
-        margin-top: -35vh;
+        /*margin-top: -35vh;*/
         flex-shrink: 0;
     }
     
