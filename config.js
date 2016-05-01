@@ -16,5 +16,5 @@ module.exports = {
         assetsPublicPath: '/',
         proxyTable: {},
     },
-    env: 'dev',
+    env: 'production',
 };

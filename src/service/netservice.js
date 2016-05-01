@@ -3,7 +3,7 @@ import VueResource from 'vue-resource';
 import globalConfig from '../../config';
 Vue.use(VueResource);
 
-const devMainUrl = globalConfig.env === 'build'
+const devMainUrl = globalConfig.env === 'production'
     ? '//vis.cse.ust.hk/dragon-lair' : '//localhost:7797';
 const $http = Vue.http;
 
