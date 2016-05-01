@@ -15,6 +15,10 @@
 </style>
 
 <style scoped>
+    .app{
+        background: url('./../../assets/background-image.jpg') center / cover;
+    }
+
     .page-ribbon {
         width: 100%;
         height: 40vh;

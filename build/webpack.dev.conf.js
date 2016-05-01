@@ -2,7 +2,6 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const config = require('../config');
-const path = require('path');
 const baseWebpackConfig = require('./webpack.base.conf');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -28,7 +27,7 @@ module.exports = merge(baseWebpackConfig, {
                 loader: 'url',
                 query: {
                     limit: 10000,
-                    name: path.join(config.dev.assetsSubDirectory, '[name].[hash:7].[ext]'),
+                    name: `${config.dev.assetsSubDirectory}/[name].[hash:7].[ext]`,
                 },
             },
         ],
