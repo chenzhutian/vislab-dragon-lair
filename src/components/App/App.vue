@@ -16,7 +16,7 @@
 
 <style scoped>
     .app{
-        background: url('./../../assets/background-image.jpg') center / cover;
+        background: url('./../../assets/bg-lonelybird.jpg') center / cover;
     }
 
     .page-ribbon {
