@@ -1,3 +1,4 @@
+'use strict';
 // https://github.com/shelljs/shelljs
 const shelljs = require('shelljs');
 shelljs.env.NODE_ENV = 'production';

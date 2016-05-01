@@ -1,3 +1,4 @@
+'use strict';
 const path = require('path');
 const cssLoaders = require('./css-loaders');
 const projectRoot = path.resolve(__dirname, '../');
