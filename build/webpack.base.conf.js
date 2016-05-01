@@ -53,6 +53,11 @@ module.exports = {
     vue: {
         loaders: cssLoaders(),
     },
+    babel: {
+        presets: ['es2015'],
+        plugins: ['transform-runtime'],
+        comments: false,
+    },
     eslint: {
         formatter: eslintFormatter,
     },

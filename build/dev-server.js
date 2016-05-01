@@ -1,3 +1,4 @@
+'use strict';
 const express = require('express');
 const webpack = require('webpack');
 const config = require('../config');
@@ -6,7 +7,6 @@ const webpackConfig = process.env.NODE_ENV === 'testing'
     ? require('./webpack.prod.conf')
     : require('./webpack.dev.conf');
 
-console.log(webpackConfig);
 
 // default port where dev server listens for incoming traffic
 const port = process.env.PORT || config.dev.port;
@@ -26,13 +26,6 @@ const devMiddleware = require('webpack-dev-middleware')(compiler, {
 });
 
 const hotMiddleware = require('webpack-hot-middleware')(compiler);
-// force page reload when html-webpack-plugin template changes
-compiler.plugin('compilation', (compilation) => {
-    compilation.plugin('html-webpack-plugin-after-emit', (data, cb) => {
-        hotMiddleware.publish({ action: 'reload' });
-        cb();
-    });
-});
 
 // proxy api requests
 Object.keys(proxyTable).forEach((context) => {
