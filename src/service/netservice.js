@@ -1,8 +1,10 @@
 import Vue from 'vue';
 import VueResource from 'vue-resource';
+import globalConfig from '../../config';
 Vue.use(VueResource);
 
-const devMainUrl = '//localhost:7797'; // '//vis.cse.ust.hk/dragon-lair';
+const devMainUrl = globalConfig.env === 'build'
+    ? '//vis.cse.ust.hk/dragon-lair' : '//localhost:7797';
 const $http = Vue.http;
 
 function searchResource(searchText, callback) {

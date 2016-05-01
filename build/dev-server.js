@@ -8,6 +8,8 @@ const webpackConfig = process.env.NODE_ENV === 'testing'
     : require('./webpack.dev.conf');
 
 
+config.dev = 'dev';
+
 // default port where dev server listens for incoming traffic
 const port = process.env.PORT || config.dev.port;
 // Define HTTP proxies to your custom API backend
