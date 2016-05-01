@@ -1,5 +1,4 @@
 'use strict';
-const path = require('path');
 const config = require('../config');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
@@ -13,8 +12,8 @@ module.exports = merge(baseWebpackConfig, {
     output: {
         path: config.build.assetsRoot,
         publicPath: config.build.assetsPublicPath,
-        filename: path.join(config.build.assetsSubDirectory, '[name].[chunkhash].js'),
-        chunkFilename: path.join(config.build.assetsSubDirectory, '[id].[chunkhash].js'),
+        filename: 'js/[name].[chunkhash].js',
+        chunkFilename: 'js/[id].[chunkhash].js',
     },
     module: {
         loaders: [
@@ -27,7 +26,7 @@ module.exports = merge(baseWebpackConfig, {
                 loader: 'url',
                 query: {
                     limit: 10000,
-                    name: `${config.dev.assetsSubDirectory}/[name].[hash:7].[ext]`,
+                    name: 'image/[name].[hash:7].[ext]',
                 },
             },
         ],
@@ -52,8 +51,7 @@ module.exports = merge(baseWebpackConfig, {
         }),
         new webpack.optimize.OccurenceOrderPlugin(),
         // extract css into its own file
-        new ExtractTextPlugin(path.join(config.build.assetsSubDirectory,
-            '[name].[contenthash].css')),
+        new ExtractTextPlugin('css/[name].[contenthash].css'),
         // generate dist index.html with correct asset hash for caching.
         // you can customize output by editing /index.html
         // see https://github.com/ampedandwired/html-webpack-plugin
