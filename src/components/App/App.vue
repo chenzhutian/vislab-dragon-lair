@@ -15,6 +15,10 @@
 </style>
 
 <style scoped>
+    .app{
+        background: url('./../../assets/bg-lonelybird.jpg') center / cover;
+    }
+
     .page-ribbon {
         width: 100%;
         height: 40vh;
@@ -23,7 +27,7 @@
     }
     
     .page-main {
-        margin-top: -35vh;
+        /*margin-top: -35vh;*/
         flex-shrink: 0;
     }
     

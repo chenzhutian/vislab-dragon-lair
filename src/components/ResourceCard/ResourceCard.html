@@ -8,8 +8,10 @@
             <div class="mdl-card__supporting-text">{{resourceYear+', '+resourceAuthors}}</div>
             <div class="mdl-card__actions mdl-card--border">
                 <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" @click="triggerResource">
-      {{showResource ? 'Collapse':'Get Detail'}}
-    </button>
+                    {{showResource ? 'Collapse':'Get Detail'}}
+                </button>
+                <span v-if="recentActType === 'upload'" class="recent-activity-info">{{recentAct}}</span>
+                <span v-if="recentActType === 'modify'" class="recent-activity-info">{{recentAct}}</span>
             </div>
             <div v-show="showResource" class="paper-content" transition="vertical-expand">
                 <object v-if="resourceType === 'paper'" class="pdf-viewer" :data="resourceLocalSrc" type="application/pdf" width="100%" height="100%">

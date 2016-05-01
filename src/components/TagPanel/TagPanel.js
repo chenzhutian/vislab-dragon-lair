@@ -37,6 +37,7 @@ export default {
             selectedTags: [],
             canRemoveLastTag: false,
             isCommiting: false,
+            hasModifiedTags: false,
         };
     },
     watch: {
@@ -47,11 +48,24 @@ export default {
                 this.isCommiting = false;
             }
         },
+        selectedTags(value) {
+            if (this.selectedTags.length !== this.resourceTags.length) {
+                this.hasModifiedTags = true;
+                return;
+            }
+            this.selectedTags.forEach(t => {
+                if (this.resourceTags.indexOf(t) === -1) {
+                    this.hasModifiedTags = true;
+                    return;
+                }
+            });
+            return;
+        },
     },
     methods: {
         commitSeletcedTags() {
             this.isCommiting = true;
-            // clone this.selectedtags to this.resourceTags
+            // clone this.selectedTags to this.resourceTags
             this.resourceTags = this.selectedTags.slice(0);
 
             $commitTags(this.resourceId, this.resourceType, this.resourceTags, response => {
@@ -67,6 +81,7 @@ export default {
             this.$nextTick(() => {
                 mdl.upgradeDom();
             });
+            this.hasModifiedTags = false;
         },
         removeLastTag() {
             if (!this.canRemoveLastTag) return;
@@ -94,6 +109,7 @@ export default {
                         actionText: 'Undo',
                     });
                 });
+                this.hasModifiedTags = true;
             }
         },
     },

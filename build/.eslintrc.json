@@ -1,9 +1,16 @@
 {
-    "root": true,
     "extends": "airbnb/base",
     "plugins": [
         "html"
     ],
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "script"
+    },
+    "env": {
+        "node": true,
+        "es6": true
+    },
     "rules": {
         "indent": [
             "error",

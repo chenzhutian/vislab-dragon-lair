@@ -1,5 +1,6 @@
 <template src="./ResourceCard.html"></template>
 <script src="./ResourceCard.js"></script>
+
 <style scope>
     .paper {
         position: relative;
@@ -52,5 +53,9 @@
     .right-in-enter,
     .right-in-leave {
         margin-left: 100%;
+    }
+    
+    .recent-activity-info {
+        margin-left: 70%;
     }
 </style>

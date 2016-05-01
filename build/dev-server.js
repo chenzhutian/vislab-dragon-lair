@@ -7,6 +7,7 @@ const webpackConfig = process.env.NODE_ENV === 'testing'
     ? require('./webpack.prod.conf')
     : require('./webpack.dev.conf');
 
+
 // default port where dev server listens for incoming traffic
 const port = process.env.PORT || config.dev.port;
 // Define HTTP proxies to your custom API backend
@@ -25,13 +26,6 @@ const devMiddleware = require('webpack-dev-middleware')(compiler, {
 });
 
 const hotMiddleware = require('webpack-hot-middleware')(compiler);
-// force page reload when html-webpack-plugin template changes
-compiler.plugin('compilation', (compilation) => {
-    compilation.plugin('html-webpack-plugin-after-emit', (data, cb) => {
-        hotMiddleware.publish({ action: 'reload' });
-        cb();
-    });
-});
 
 // proxy api requests
 Object.keys(proxyTable).forEach((context) => {
@@ -53,7 +47,8 @@ app.use(devMiddleware);
 app.use(hotMiddleware);
 
 // serve pure static assets
-const staticPath = config.build.assetsPublicPath + config.build.assetsSubDirectory;
+// remove the first '.' in config.build.assetsPublicPath
+const staticPath = config.dev.assetsPublicPath + config.dev.assetsSubDirectory;
 app.use(staticPath, express.static('./static'));
 
 module.exports = app.listen(port, (err) => {

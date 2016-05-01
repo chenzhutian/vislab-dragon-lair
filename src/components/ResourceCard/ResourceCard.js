@@ -28,7 +28,7 @@ export default {
     computed: {
         resourceType() {
             if (!this.resourceData) return null;
-            return this.resourceData._type;
+            return this.resourceData.type;
         },
         resourceTitle() {
             if (!this.resourceData) return '';
@@ -51,7 +51,7 @@ export default {
         },
         resourceId() {
             if (!this.resourceData) return null;
-            return this.resourceData._id;
+            return this.resourceData.id;
         },
         resourceLocalSrc() {
             if (!this.resourceData) return '';
@@ -59,5 +59,13 @@ export default {
                 ? `./${this.resourceData.vislabSrc}`
                 : `.${this.resourceData.vislabSrc}`;
         },
+        // recentActType() {
+        //     if (!this.resourceData.recentAct) return null;
+        //     return this.resourceData.recentAct.type;
+        // },
+        // recentAct() {
+        //     // should add more code
+        //     return recentActType;
+        // },
     },
 };

@@ -4,7 +4,7 @@
             <input class="mdl-textfield__input" type="text" id="{{resourceId}}-tag-input" v-model="newTag" @keyup.enter="addTag">
             <label class="mdl-textfield__label" for="{{resourceId}}-tag-input">Enter to add new Tag...</label>
         </div>
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent commit-button" @click="commitSeletcedTags">
+        <button v-show="hasModifiedTags" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent commit-button" @click="commitSeletcedTags">
                         Commit
                     </button>
         <div id="tag-snackbar" class="mdl-js-snackbar mdl-snackbar">
@@ -15,7 +15,7 @@
     <ul class="demo-list-control mdl-list">
         <li class="mdl-list__item" transition="vertical-expand" v-for="(index,tag) in resourceTags" id="list-item-{{index}}">
             <span class="mdl-list__item-primary-content">
-                <i class="material-icons  mdl-list__item-icon">{{tag | tagCheckBoxIcon selectedTags}}</i>
+                <i class="material-icons  mdl-list__item-icon">{{selectedTags.indexOf(tag) > -1 ? 'label' : 'label_outline'}}</i>
                 {{tag}}
             </span>
             <span class="mdl-list__item-secondary-action">
