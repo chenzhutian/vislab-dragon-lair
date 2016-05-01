@@ -66,11 +66,6 @@ function uploadImage(file, fileInfo, callback) {
     const formData = new FormData();
     formData.append('imageFile', file);
     Object.keys(fileInfo).forEach(p => formData.append(p, fileInfo[p]));
-    // for (const p in fileInfo) {
-    //     if (fileInfo.hasOwnProperty(p)) {
-    //         formData.append(p, fileInfo[p]);
-    //     }
-    // }
     $http.post(url, formData, {
         'Content-Type': 'multipart/form-data',
     }).then(response => {
