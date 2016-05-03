@@ -1,6 +1,6 @@
 'use strict';
 const path = require('path');
-const util = require('./utils');
+const utils = require('./utils');
 const projectRoot = path.resolve(__dirname, '../');
 const eslintFormatter = require('eslint-friendly-formatter');
 
@@ -52,7 +52,7 @@ module.exports = {
         ],
     },
     vue: {
-        loaders: util.cssLoaders(),
+        loaders: utils.cssLoaders(),
     },
     babel: {
         presets: ['es2015'],
