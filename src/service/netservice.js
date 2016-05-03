@@ -12,7 +12,7 @@ function searchResource(searchText, callback) {
     $http.get(url).then(response => {
         callback(response);
     }, errResponse => {
-        console.log(errResponse);
+        console.error(errResponse);
     });
 }
 
@@ -21,7 +21,7 @@ function searchPaper(searchText, callback) {
     $http.get(url).then(response => {
         callback(response);
     }, errResponse => {
-        console.log(errResponse);
+        console.error(errResponse);
     });
 }
 
@@ -31,7 +31,7 @@ function searchRecentAct(searchCount, callback) {
     $http.get(url).then(response => {
         callback(response);
     }, errResponse => {
-        console.log(errResponse);
+        console.error(errResponse);
     });
 }
 
@@ -45,7 +45,7 @@ function commitTags(resourceId, resourceType, tags, callback) {
     }).then(response => {
         callback(response);
     }, errResponse => {
-        console.log(errResponse);
+        console.error(errResponse);
     });
 }
 
@@ -59,7 +59,7 @@ function commitPaperTags(paperId, tags, callback) {
     }).then(response => {
         callback(response);
     }, errResponse => {
-        console.log(errResponse);
+        console.error(errResponse);
     });
 }
 
@@ -73,7 +73,7 @@ function uploadImage(file, fileInfo, callback) {
     }).then(response => {
         callback(response);
     }, errResponse => {
-        console.log(errResponse);
+        console.error(errResponse);
     });
 }
 

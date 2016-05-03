@@ -50,9 +50,10 @@ app.use(hotMiddleware);
 const staticPath = config.dev.assetsPublicPath + config.dev.assetsSubDirectory;
 app.use(staticPath, express.static('./static'));
 
+/* eslint no-console:0 */
 module.exports = app.listen(port, (err) => {
     if (err) {
-        console.log(err);
+        console.error(err);
         return;
     }
     console.log(`Listening at http://localhost:${port}\n`);
