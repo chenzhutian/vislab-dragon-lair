@@ -3,7 +3,7 @@ const config = require('../config');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base.conf');
-const cssLoaders = require('./css-loaders');
+const util = require('./utils');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -32,7 +32,7 @@ module.exports = merge(baseWebpackConfig, {
         ],
     },
     vue: {
-        loaders: cssLoaders({
+        loaders: util.cssLoaders({
             sourceMap: config.build.productionSourceMap,
             extract: true,
         }),
