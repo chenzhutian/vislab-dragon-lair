@@ -2,10 +2,7 @@
 const path = require('path');
 const config = require('../config');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
-module.exports.assetsPath = tempPath => {
-    return path.posix.join(config.build.assetsSubDirectory, tempPath);
-};
+module.exports.assetsPath = tempPath => path.posix.join(config.assetsSubDirectory, tempPath);
 
 module.exports.cssLoaders = (options) => {
     const tempOption = options || {};
