@@ -6,11 +6,16 @@
 const path = require('path');
 const merge = require('webpack-merge');
 const baseConfig = require('../../build/webpack.base.conf');
+const utils = require('../../build/utils');
 const projectRoot = path.resolve(__dirname, '../../');
+// const projectConfig = require('../../config');
 
 const webpackConfig = merge(baseConfig, {
     // use inline sourcemap for karma-sourcemap-loader
     devtool: '#inline-source-map',
+    module: {
+        loaders: utils.styleLoaders(),
+    },
     vue: {
         loaders: {
             js: 'isparta',
@@ -22,7 +27,7 @@ const webpackConfig = merge(baseConfig, {
 delete webpackConfig.entry;
 
 // make sure isparta loader is applied before eslint
-webpackConfig.module.preLoaders = webpackConfig.module.preLoaders || []
+webpackConfig.module.preLoaders = webpackConfig.module.preLoaders || [];
 webpackConfig.module.preLoaders.unshift({
     test: /\.js$/,
     loader: 'isparta',
@@ -50,7 +55,7 @@ module.exports = config => {
         reporters: ['spec', 'coverage'],
         files: ['./index.js'],
         preprocessors: {
-            './index.js': ['webpack', 'sourcemap']
+            './index.js': ['webpack', 'sourcemap'],
         },
         webpack: webpackConfig,
         webpackMiddleware: {
