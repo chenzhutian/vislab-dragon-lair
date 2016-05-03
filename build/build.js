@@ -9,7 +9,6 @@ const ora = require('ora');
 const webpack = require('webpack');
 const webpackConfig = require('./webpack.prod.conf');
 
-/* eslint no-console:0 */
 console.log(
     '  Tip:\n' +
     '  Built files are meant to be served over an HTTP server.\n' +

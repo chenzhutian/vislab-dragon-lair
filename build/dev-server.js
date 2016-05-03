@@ -50,7 +50,6 @@ app.use(hotMiddleware);
 const staticPath = config.dev.assetsPublicPath + config.dev.assetsSubDirectory;
 app.use(staticPath, express.static('./static'));
 
-/* eslint no-console:0 */
 module.exports = app.listen(port, (err) => {
     if (err) {
         console.error(err);
