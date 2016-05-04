@@ -3,7 +3,7 @@ branch - master:
 [![Build Status](https://travis-ci.org/unhealthy/vislab-dragon-lair.svg?branch=development)](https://travis-ci.org/unhealthy/vislab-dragon-lair)
 [![Coverage Status](https://coveralls.io/repos/github/unhealthy/vislab-dragon-lair/badge.svg?branch=master)](https://coveralls.io/github/unhealthy/vislab-dragon-lair?branch=master)
 [![Dependencies](https://david-dm.org/unhealthy/vislab-dragon-lair.git.svg)](https://david-dm.org/unhealthy/vislab-dragon-lair)
-[![devDependency Status](https://david-dm.org/unhealthy/vislab-dragon-lair/dev-status.svg)](https://david-dm.org/unhealthy/vislab-dragon-lair#info=devDependencies)
+[![devDependency Status](https://david-dm.org/unhealthy/vislab-dragon-lair/dev-status.svg)](https://david-dm.org/unhealthy/vislab-dragon-lair#info=devDependencies)  
 branch - development:
 [![Build Status](https://travis-ci.org/unhealthy/vislab-dragon-lair.svg?branch=development)](https://travis-ci.org/unhealthy/vislab-dragon-lair)
 [![Coverage Status](https://coveralls.io/repos/github/unhealthy/vislab-dragon-lair/badge.svg?branch=development)](https://coveralls.io/github/unhealthy/vislab-dragon-lair?branch=master)
