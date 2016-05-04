@@ -96,8 +96,3 @@ module.exports = config => {
         },
     });
 };
-
-// [
-//                 { type: 'lcov', subdir: '.' },
-//                 { type: 'text-summary' },
-//             ],
