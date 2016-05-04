@@ -60,6 +60,19 @@ webpackConfig.module.loaders.some((loader, i) => {
     return null;
 });
 
+
+const reportersConifg = ['spec', 'coverage'];
+const coverageReporters = [
+    { type: 'text-summary' },
+];
+
+if (process.env.TRAVIS) {
+    coverageReporters.push({ type: 'lcovonly' });
+    reportersConifg.push('coveralls');
+} else {
+    coverageReporters.push({ type: 'html', subdir: '.' });
+}
+
 module.exports = config => {
     config.set({
         // to run in additional browsers:
@@ -68,7 +81,7 @@ module.exports = config => {
         // 2. add it to the `browsers` array below.
         browsers: ['PhantomJS'],
         frameworks: ['mocha', 'sinon-chai'],
-        reporters: ['spec', 'coverage'],
+        reporters: reportersConifg,
         files: ['./index.js'],
         preprocessors: {
             './index.js': ['webpack', 'sourcemap'],
@@ -79,10 +92,12 @@ module.exports = config => {
         },
         coverageReporter: {
             dir: './coverage',
-            reporters: [
-                { type: 'lcov', subdir: '.' },
-                { type: 'text-summary' },
-            ],
+            reporters: coverageReporters,
         },
     });
 };
+
+// [
+//                 { type: 'lcov', subdir: '.' },
+//                 { type: 'text-summary' },
+//             ],
