@@ -67,10 +67,8 @@ const coverageReporters = [
 ];
 
 if (process.env.TRAVIS) {
-    coverageReporters.push({ type: 'lcovonly' });
+    coverageReporters.push({ type: 'lcovonly', subdir: '.' });
     reportersConifg.push('coveralls');
-    console.log(coverageReporters);
-    console.log(reportersConifg);
 } else {
     coverageReporters.push({ type: 'html', subdir: '.' });
 }
