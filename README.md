@@ -1,5 +1,6 @@
 # vislab-paper-warehouse
 [![Build Status](https://travis-ci.org/unhealthy/vislab-dragon-lair.svg?branch=development)](https://travis-ci.org/unhealthy/vislab-dragon-lair)
+[![Coverage Status](https://coveralls.io/repos/github/unhealthy/vislab-dragon-lair/badge.svg?branch=master)](https://coveralls.io/github/unhealthy/vislab-dragon-lair?branch=master)
 [![Dependencies](https://david-dm.org/unhealthy/vislab-dragon-lair.git.svg)]
 ## Build Setup
 
