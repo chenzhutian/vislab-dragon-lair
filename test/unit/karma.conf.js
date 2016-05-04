@@ -67,8 +67,7 @@ const coverageReporters = [
 ];
 
 if (process.env.TRAVIS) {
-    coverageReporters.push({ type: 'lcovonly' });
-    reportersConifg.push('coveralls');
+    coverageReporters.push({ type: 'lcovonly', subdir: '.' });
 } else {
     coverageReporters.push({ type: 'html', subdir: '.' });
 }
@@ -96,8 +95,3 @@ module.exports = config => {
         },
     });
 };
-
-// [
-//                 { type: 'lcov', subdir: '.' },
-//                 { type: 'text-summary' },
-//             ],

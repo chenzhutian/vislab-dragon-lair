@@ -3,6 +3,8 @@ node_js:
   - "5"
   - "4"
 before_script:
-  - npm install
+  - "npm install"
+  - "npm install karma-coveralls"
 after_success:
-  - coveralls
+  - "npm install coveralls && cat ./test/unit/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+  
