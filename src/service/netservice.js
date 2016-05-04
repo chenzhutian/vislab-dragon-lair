@@ -1,8 +1,10 @@
 import Vue from 'vue';
 import VueResource from 'vue-resource';
+import globalConfig from '../../config';
 Vue.use(VueResource);
 
-const devMainUrl = '//localhost:7797'; // '//vis.cse.ust.hk/dragon-lair';
+const devMainUrl = globalConfig.env === 'production'
+    ? '//vis.cse.ust.hk/dragon-lair' : '//localhost:7797';
 const $http = Vue.http;
 
 function searchResource(searchText, callback) {
@@ -10,7 +12,7 @@ function searchResource(searchText, callback) {
     $http.get(url).then(response => {
         callback(response);
     }, errResponse => {
-        console.log(errResponse);
+        console.error(errResponse);
     });
 }
 
@@ -19,7 +21,7 @@ function searchPaper(searchText, callback) {
     $http.get(url).then(response => {
         callback(response);
     }, errResponse => {
-        console.log(errResponse);
+        console.error(errResponse);
     });
 }
 
@@ -29,7 +31,7 @@ function searchRecentAct(searchCount, callback) {
     $http.get(url).then(response => {
         callback(response);
     }, errResponse => {
-        console.log(errResponse);
+        console.error(errResponse);
     });
 }
 
@@ -43,7 +45,7 @@ function commitTags(resourceId, resourceType, tags, callback) {
     }).then(response => {
         callback(response);
     }, errResponse => {
-        console.log(errResponse);
+        console.error(errResponse);
     });
 }
 
@@ -57,7 +59,7 @@ function commitPaperTags(paperId, tags, callback) {
     }).then(response => {
         callback(response);
     }, errResponse => {
-        console.log(errResponse);
+        console.error(errResponse);
     });
 }
 
@@ -71,7 +73,7 @@ function uploadImage(file, fileInfo, callback) {
     }).then(response => {
         callback(response);
     }, errResponse => {
-        console.log(errResponse);
+        console.error(errResponse);
     });
 }
 

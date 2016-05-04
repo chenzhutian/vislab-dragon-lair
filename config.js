@@ -2,18 +2,18 @@
 const path = require('path');
 
 module.exports = {
+    assetsSubDirectory: 'static',
     build: {
         index: path.resolve(__dirname, 'dist/index.html'),
         assetsRoot: path.resolve(__dirname, 'dist'),
-        assetsSubDirectory: 'static',
-        assetsPublicPath: './',
+        assetsPublicPath: '/dragon-lair/',
         productionSourceMap: true,
     },
     dev: {
         port: 8080,
         assetsRoot: path.resolve(__dirname, 'dist'),
-        assetsSubDirectory: 'static',
         assetsPublicPath: '/',
         proxyTable: {},
     },
+    env: 'production',
 };

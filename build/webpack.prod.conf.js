@@ -1,10 +1,9 @@
 'use strict';
-const path = require('path');
 const config = require('../config');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base.conf');
-const cssLoaders = require('./css-loaders');
+const utils = require('./utils');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -13,27 +12,14 @@ module.exports = merge(baseWebpackConfig, {
     output: {
         path: config.build.assetsRoot,
         publicPath: config.build.assetsPublicPath,
-        filename: path.join(config.build.assetsSubDirectory, '[name].[chunkhash].js'),
-        chunkFilename: path.join(config.build.assetsSubDirectory, '[id].[chunkhash].js'),
+        filename: utils.assetsPath('js/[name].[chunkhash].js'),
+        chunkFilename: utils.assetsPath('js/[id].[chunkhash].js'),
     },
     module: {
-        loaders: [
-            {
-                test: /\.scss$/,
-                loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader'),
-            },
-            {
-                test: /\.(png|jpe?g|gif|svg|woff2?|eot|ttf|otf)(\?.*)?$/,
-                loader: 'url',
-                query: {
-                    limit: 10000,
-                    name: path.join(config.build.assetsSubDirectory, '[name].[hash:7].[ext]'),
-                },
-            },
-        ],
+        loaders: utils.styleLoaders({ sourceMap: config.build.productionSourceMap, extract: true }),
     },
     vue: {
-        loaders: cssLoaders({
+        loaders: utils.cssLoaders({
             sourceMap: config.build.productionSourceMap,
             extract: true,
         }),
@@ -52,8 +38,7 @@ module.exports = merge(baseWebpackConfig, {
         }),
         new webpack.optimize.OccurenceOrderPlugin(),
         // extract css into its own file
-        new ExtractTextPlugin(path.join(config.build.assetsSubDirectory,
-            '[name].[contenthash].css')),
+        new ExtractTextPlugin(utils.assetsPath('css/[name].[contenthash].css')),
         // generate dist index.html with correct asset hash for caching.
         // you can customize output by editing /index.html
         // see https://github.com/ampedandwired/html-webpack-plugin

@@ -2,11 +2,11 @@
 const express = require('express');
 const webpack = require('webpack');
 const config = require('../config');
+const path = require('path');
 const proxyMiddleware = require('http-proxy-middleware');
 const webpackConfig = process.env.NODE_ENV === 'testing'
     ? require('./webpack.prod.conf')
     : require('./webpack.dev.conf');
-
 
 // default port where dev server listens for incoming traffic
 const port = process.env.PORT || config.dev.port;
@@ -47,13 +47,12 @@ app.use(devMiddleware);
 app.use(hotMiddleware);
 
 // serve pure static assets
-// remove the first '.' in config.build.assetsPublicPath
-const staticPath = config.dev.assetsPublicPath + config.dev.assetsSubDirectory;
+const staticPath = path.posix.join(config.dev.assetsPublicPath, config.assetsSubDirectory);
 app.use(staticPath, express.static('./static'));
 
 module.exports = app.listen(port, (err) => {
     if (err) {
-        console.log(err);
+        console.error(err);
         return;
     }
     console.log(`Listening at http://localhost:${port}\n`);

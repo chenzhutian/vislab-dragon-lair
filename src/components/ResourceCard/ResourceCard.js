@@ -51,7 +51,7 @@ export default {
         },
         resourceId() {
             if (!this.resourceData) return null;
-            return this.resourceData.id;
+            return this.resourceData._id;
         },
         resourceLocalSrc() {
             if (!this.resourceData) return '';

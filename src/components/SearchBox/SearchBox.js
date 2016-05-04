@@ -18,7 +18,6 @@ export default {
             searchCount: 10,
         };
     },
-
     methods: {
         searchResource() {
             if (!this.searchText || !this.searchText.length) return;

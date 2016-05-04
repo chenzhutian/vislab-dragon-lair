@@ -23,6 +23,22 @@
             {
                 "args": "none"
             }
+        ],
+        "no-console": [
+            "error",
+            {
+                "allow": [
+                    "warn",
+                    "error"
+                ]
+            }
         ]
+    },
+    "settings": {
+        "import/resolver": {
+            "webpack": {
+                "config": "/build/webpack.base.conf.js"
+            }
+        }
     }
 }
