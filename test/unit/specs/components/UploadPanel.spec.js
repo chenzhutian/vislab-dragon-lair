@@ -28,7 +28,6 @@ describe('UploadPanel.vue', function () {
         before('init componet', function () {
             document.body.insertAdjacentHTML('afterbegin', '<app></app>');
             vm = new Vue(UploadPanelWithMocks).$mount('app');
-            // vm.$mount('app');
         });
 
         describe('#ready()', function () {
@@ -82,6 +81,23 @@ describe('UploadPanel.vue', function () {
                 expect(vm.resourceAuthors).to.equal(null);
                 expect(vm.resourceUrl).to.equal(null);
                 expect(vm.resourceDescription).to.equal(null);
+            });
+        });
+
+        describe('#triggerShowDialog()', function () {
+            before('set showDialog to true', function () {
+                vm.showDialog = true;
+            });
+
+            it('showDialog should be false', function () {
+                vm.triggerShowDialog();
+                expect(vm.showDialog).to.equal(false);
+            });
+        });
+
+        describe('#openUploadFileDialog()', function () {
+            it('should return true', function () {
+                expect(vm.openUploadFileDialog()).to.equal(true);
             });
         });
     });

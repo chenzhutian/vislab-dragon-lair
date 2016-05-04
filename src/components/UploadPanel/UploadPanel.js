@@ -37,7 +37,13 @@ export default {
             this.showDialog = !this.showDialog;
         },
         openUploadFileDialog() {
-            this.$el.querySelector('#upload-input').click();
+            const inputElement = this.$el.querySelector('#upload-input');
+            if (inputElement instanceof HTMLInputElement) {
+                inputElement.click();
+                return true;
+            }
+            // TODO warning
+            return false;
         },
         getUploadFile(event) {
             this.fileToBeUploaded = event.srcElement.files[0];
