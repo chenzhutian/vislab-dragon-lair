@@ -7,8 +7,8 @@ const path = require('path');
 const merge = require('webpack-merge');
 const baseConfig = require('../../build/webpack.base.conf');
 const utils = require('../../build/utils');
-const projectRoot = path.resolve(__dirname, '../../');
 // const projectConfig = require('../../config');
+const projectRoot = path.resolve(__dirname, '../../');
 
 const webpackConfig = merge(baseConfig, {
     // use inline sourcemap for karma-sourcemap-loader
@@ -28,12 +28,28 @@ delete webpackConfig.entry;
 
 // make sure isparta loader is applied before eslint
 webpackConfig.module.preLoaders = webpackConfig.module.preLoaders || [];
+// webpackConfig.module.preLoaders.unshift({
+//     test: /\.js$/,
+//     loader: 'babel',
+//     exclude: [
+//         path.resolve('src/components/'),
+//         path.resolve('node_modules/'),
+//     ],
+
+// });
+// webpackConfig.module.preLoaders.unshift({
+//     test: /\.js$/,
+//     loader: 'isparta',
+//     include: path.resolve('src'),
+// });
+
 webpackConfig.module.preLoaders.unshift({
     test: /\.js$/,
     loader: 'isparta',
     include: projectRoot,
     exclude: /test\/unit|node_modules/,
 });
+
 
 // only apply babel for test files when using isparta
 webpackConfig.module.loaders.some((loader, i) => {
