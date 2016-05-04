@@ -1,5 +1,6 @@
 # vislab-paper-warehouse
-
+[![Build Status](https://travis-ci.org/unhealthy/vislab-dragon-lair.svg?branch=development)](https://travis-ci.org/unhealthy/vislab-dragon-lair)
+[![Dependencies](https://david-dm.org/unhealthy/vislab-dragon-lair.git.svg)]
 ## Build Setup
 
 ``` bash
