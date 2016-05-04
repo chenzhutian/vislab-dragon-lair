@@ -7,3 +7,4 @@ before_script:
   - "npm install karma-coveralls"
 after_success:
   - "npm install coveralls && cat ./test/unit/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+  
