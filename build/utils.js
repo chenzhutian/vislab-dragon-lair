@@ -4,8 +4,7 @@ const config = require('../config');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports.assetsPath = tempPath => path.posix.join(config.assetsSubDirectory, tempPath);
 
-module.exports.cssLoaders = (options) => {
-    const tempOption = options || {};
+module.exports.cssLoaders = (options = {}) => {
     // generate loader string to be used with extract text plugin
     function generateLoaders(loaders) {
         const sourceLoader = loaders.map(loader => {
@@ -18,10 +17,10 @@ module.exports.cssLoaders = (options) => {
                 newLoader = `${newLoader}-loader`;
                 extraParamChar = '?';
             }
-            return `${newLoader}${tempOption.sourceMap ? `${extraParamChar}sourceMap` : ''}`;
+            return `${newLoader}${options.sourceMap ? `${extraParamChar}sourceMap` : ''}`;
         }).join('!');
 
-        if (tempOption.extract) {
+        if (options.extract) {
             return ExtractTextPlugin.extract('vue-style-loader', sourceLoader);
         }
         return ['vue-style-loader', sourceLoader].join('!');

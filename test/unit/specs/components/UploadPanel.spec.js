@@ -28,7 +28,6 @@ describe('UploadPanel.vue', function () {
         before('init componet', function () {
             document.body.insertAdjacentHTML('afterbegin', '<app></app>');
             vm = new Vue(UploadPanelWithMocks).$mount('app');
-            // vm.$mount('app');
         });
 
         describe('#ready()', function () {
@@ -82,6 +81,37 @@ describe('UploadPanel.vue', function () {
                 expect(vm.resourceAuthors).to.equal(null);
                 expect(vm.resourceUrl).to.equal(null);
                 expect(vm.resourceDescription).to.equal(null);
+            });
+        });
+
+        describe('#triggerShowDialog()', function () {
+            before('set showDialog to true', function () {
+                vm.showDialog = true;
+            });
+
+            it('showDialog should be false', function () {
+                vm.triggerShowDialog();
+                expect(vm.showDialog).to.equal(false);
+            });
+        });
+
+        describe('#openUploadFileDialog()', function () {
+            it('should return true if get a input element', function () {
+                expect(vm.openUploadFileDialog()).to.equal(true);
+            });
+
+            it('should return false if get nothing', function () {
+                vm.$el.querySelector('#upload-input').id = 'temp-upload-input';
+                expect(vm.openUploadFileDialog()).to.equal(false);
+                vm.$el.querySelector('#temp-upload-input').id = 'upload-input';
+            });
+
+            it('should return false if get a non-input element', function () {
+                vm.$el.querySelector('#upload-input').id = 'temp-upload-input';
+                vm.$el.insertAdjacentHTML('afterbegin', '<div id="upload-input"></div>');
+                expect(vm.openUploadFileDialog()).to.equal(false);
+                vm.$el.querySelector('#upload-input').remove();
+                vm.$el.querySelector('#temp-upload-input').id = 'upload-input';
             });
         });
     });
