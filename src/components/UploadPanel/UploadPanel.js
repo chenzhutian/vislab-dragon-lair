@@ -1,9 +1,10 @@
-// import mdl from 'material-design-lite/material.js';
+import mdl from 'material-design-lite/material.js';
 import { uploadImage as $uploadImage } from '../../service/netservice.js';
 
 export default {
     ready() {
         this.toast = this.$el.querySelector('#toast-snackbar');
+        mdl.upgradeElement(this.toast);
     },
     // complex object
     toast: null,
@@ -50,12 +51,17 @@ export default {
             if (!this.fileToBeUploaded) {
                 this.resourceTitle = null;
                 this.$el.querySelector('#resource-title').classList.remove('is-dirty');
-                return;
+                return false;
             }
             this.resourceTitle = this.fileToBeUploaded.name;
             this.$el.querySelector('#resource-title').classList.add('is-dirty');
+            return true;
         },
-        uploadFile() {
+        // async function should always has a callback param
+        uploadFile(callback = (err, result) => {
+            if (err) throw err;
+            return result;
+        }) {
             if (!this.resourceTitle || !this.resourceTitle.length) {
                 // TODO snackbar
                 return;
@@ -75,12 +81,13 @@ export default {
                 src: this.resourceUrl,
                 description: this.resourceDescription,
             };
-            $uploadImage(this.fileToBeUploaded, resourceInfo, response => {
-                if (response.data) {
+            $uploadImage(this.fileToBeUploaded, resourceInfo, (err, response) => {
+                if (response && response.data) {
                     this.cleanUploadData();
                 } else {
                     this.toast.MaterialSnackbar.showSnackbar({ message: 'Upload Failed' });
                 }
+                callback(err, response);
             });
         },
     },
