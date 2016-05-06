@@ -170,6 +170,7 @@ describe('UploadPanel.vue', function () {
                 vm.resourceUrl = '//vis.cse.ust.hk';
                 vm.resourceDescription = 'it\'s just a test case';
             });
+
             it('Should return undefined if no title', function () {
                 vm.resourceTitle = null;
                 expect(vm.uploadFile()).to.equal(undefined);
