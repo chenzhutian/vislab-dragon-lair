@@ -64,10 +64,7 @@ export default {
     },
     methods: {
         // async function should always has callback param
-        commitSeletcedTags(callback = (err, result) => {
-            if (err) throw err;
-            return result;
-        }) {
+        commitSeletcedTags(callback = undefined) {
             this.isCommiting = true;
             // clone this.selectedTags to this.resourceTags
             this.resourceTags = this.selectedTags.slice(0);
@@ -79,7 +76,7 @@ export default {
                         message: 'commit sucess',
                     });
                 }
-                callback(err, response);
+                if (callback) callback(err, response);
             });
 
             // TODO this can be optimized by controlling the upgrade dom

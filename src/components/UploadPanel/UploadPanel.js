@@ -58,10 +58,7 @@ export default {
             return true;
         },
         // async function should always has a callback param
-        uploadFile(callback = (err, result) => {
-            if (err) throw err;
-            return result;
-        }) {
+        uploadFile(callback = undefined) {
             if (!this.resourceTitle || !this.resourceTitle.length) {
                 // TODO snackbar
                 return;
@@ -87,7 +84,7 @@ export default {
                 } else {
                     this.toast.MaterialSnackbar.showSnackbar({ message: 'Upload Failed' });
                 }
-                callback(err, response);
+                if (callback) callback(err, response);
             });
         },
     },

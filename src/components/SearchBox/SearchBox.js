@@ -20,10 +20,7 @@ export default {
     },
     methods: {
         // async function should always has callback param
-        searchResource(callback = (err, result) => {
-            if (err) throw (err);
-            return result;
-        }) {
+        searchResource(callback = undefined) {
             if (!this.searchText || !this.searchText.length) return;
             $searchResource(this.searchText, (err, response) => {
                 if (response.status === 200) {
@@ -41,7 +38,7 @@ export default {
                         this.resourceData = tempResourceData;
                     }
                 }
-                callback(err, response);
+                if (callback) callback(err, response);
             });
         },
         //add by zhp
