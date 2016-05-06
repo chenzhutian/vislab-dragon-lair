@@ -10,18 +10,18 @@ const $http = Vue.http;
 function searchResource(searchText, callback) {
     const url = `${devMainUrl}/search?search=${searchText}`;
     $http.get(url).then(response => {
-        callback(response);
+        callback(null, response);
     }, errResponse => {
-        console.error(errResponse);
+        callback(errResponse, null);
     });
 }
 
 function searchPaper(searchText, callback) {
     const url = `${devMainUrl}/search/paper?search=${searchText}`;
     $http.get(url).then(response => {
-        callback(response);
+        callback(null, response);
     }, errResponse => {
-        console.error(errResponse);
+        callback(errResponse, null);
     });
 }
 
@@ -43,9 +43,9 @@ function commitTags(resourceId, resourceType, tags, callback) {
             'Content-Type': 'application/json',
         },
     }).then(response => {
-        callback(response);
+        callback(null, response);
     }, errResponse => {
-        console.error(errResponse);
+        callback(errResponse, null);
     });
 }
 
@@ -57,9 +57,9 @@ function commitPaperTags(paperId, tags, callback) {
             'Content-Type': 'application/json',
         },
     }).then(response => {
-        callback(response);
+        callback(null, response);
     }, errResponse => {
-        console.error(errResponse);
+        callback(errResponse, null);
     });
 }
 
@@ -71,9 +71,9 @@ function uploadImage(file, fileInfo, callback) {
     $http.post(url, formData, {
         'Content-Type': 'multipart/form-data',
     }).then(response => {
-        callback(response);
+        callback(null, response);
     }, errResponse => {
-        console.error(errResponse);
+        callback(errResponse, null);
     });
 }
 

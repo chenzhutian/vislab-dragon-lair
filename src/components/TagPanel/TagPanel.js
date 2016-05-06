@@ -63,18 +63,23 @@ export default {
         },
     },
     methods: {
-        commitSeletcedTags() {
+        // async function should always has callback param
+        commitSeletcedTags(callback = (err, result) => {
+            if (err) throw err;
+            return result;
+        }) {
             this.isCommiting = true;
             // clone this.selectedTags to this.resourceTags
             this.resourceTags = this.selectedTags.slice(0);
 
-            $commitTags(this.resourceId, this.resourceType, this.resourceTags, response => {
+            $commitTags(this.resourceId, this.resourceType, this.resourceTags, (err, response) => {
                 if (response.status === 200 && response.data) {
                     // TODO trigger a snackbar here
                     this.snackbar.MaterialSnackbar.showSnackbar({
                         message: 'commit sucess',
                     });
                 }
+                callback(err, response);
             });
 
             // TODO this can be optimized by controlling the upgrade dom

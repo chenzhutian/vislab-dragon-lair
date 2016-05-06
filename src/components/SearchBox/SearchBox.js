@@ -19,16 +19,20 @@ export default {
         };
     },
     methods: {
-        searchResource() {
+        // async function should always has callback param
+        searchResource(callback = (err, result) => {
+            if (err) throw (err);
+            return result;
+        }) {
             if (!this.searchText || !this.searchText.length) return;
-            $searchResource(this.searchText, responseData => {
-                if (responseData.status === 200) {
-                    if (Array.isArray(responseData.data)) {
-                        this.resourceData = responseData.data;
-                    } else if (typeof responseData.data === 'object') {
+            $searchResource(this.searchText, (err, response) => {
+                if (response.status === 200) {
+                    if (Array.isArray(response.data)) {
+                        this.resourceData = response.data;
+                    } else if (typeof response.data === 'object') {
                         const tempResourceData = [];
-                        Object.keys(responseData.data).forEach(p => {
-                            responseData.data[p].forEach(d => {
+                        Object.keys(response.data).forEach(p => {
+                            response.data[p].forEach(d => {
                                 const tempD = d;
                                 tempD.type = p;
                                 tempResourceData.push(tempD);
@@ -37,6 +41,7 @@ export default {
                         this.resourceData = tempResourceData;
                     }
                 }
+                callback(err, response);
             });
         },
         //add by zhp
