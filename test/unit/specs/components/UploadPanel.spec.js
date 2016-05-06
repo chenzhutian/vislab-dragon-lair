@@ -1,12 +1,7 @@
 import Vue from 'vue';
+import UploadPanel from '../../../../src/components/UploadPanel/UploadPanel.vue';
 import UploadPanelInjector from
 '!!vue?inject!../../../../src/components/UploadPanel/UploadPanel.vue';
-
-const UploadPanelWithMocks = new UploadPanelInjector({
-    '../../service/netservice.js': {
-        uploadImage: (fileToBeUploaded, resourceInfo, response) => null,
-    },
-});
 
 describe('UploadPanel.vue', function () {
     describe('#render component in parent component', function () {
@@ -14,20 +9,24 @@ describe('UploadPanel.vue', function () {
         before('init component in parent component', function () {
             vm = new Vue({
                 template: '<div><upload-panel></upload-panel></div>',
-                components: { UploadPanel: UploadPanelWithMocks },
+                components: { UploadPanel },
             }).$mount();
         });
-        it('should render correct contents', function () {
+        it('Should render correct contents', function () {
             expect(vm.$el.querySelector('.mdl-card__title').textContent.trim())
                 .to.equal('Upload Resource');
         });
     });
 
-    describe('component logic', function () {
+    describe('component logic without mock', function () {
         let vm;
         before('init componet', function () {
             document.body.insertAdjacentHTML('afterbegin', '<app></app>');
-            vm = new Vue(UploadPanelWithMocks).$mount('app');
+            vm = new Vue(UploadPanel).$mount('app');
+        });
+
+        after('remove component', function () {
+            document.body.innerHTML = '';
         });
 
         describe('#ready()', function () {
@@ -71,7 +70,7 @@ describe('UploadPanel.vue', function () {
                 vm.resourceDescription = 'it\'s just a test case';
             });
 
-            it('should clean all data', function () {
+            it('Should clean all data', function () {
                 // clean data
                 vm.cleanUploadData();
                 expect(vm.showDialog).to.eql(false);
@@ -89,29 +88,134 @@ describe('UploadPanel.vue', function () {
                 vm.showDialog = true;
             });
 
-            it('showDialog should be false', function () {
+            it('showDialog Should be false', function () {
                 vm.triggerShowDialog();
                 expect(vm.showDialog).to.equal(false);
             });
         });
 
         describe('#openUploadFileDialog()', function () {
-            it('should return true if get a input element', function () {
+            it('Should return true if get a input element', function () {
                 expect(vm.openUploadFileDialog()).to.equal(true);
             });
 
-            it('should return false if get nothing', function () {
+            it('Should return false if get nothing', function () {
                 vm.$el.querySelector('#upload-input').id = 'temp-upload-input';
                 expect(vm.openUploadFileDialog()).to.equal(false);
                 vm.$el.querySelector('#temp-upload-input').id = 'upload-input';
             });
 
-            it('should return false if get a non-input element', function () {
+            it('Should return false if get a non-input element', function () {
                 vm.$el.querySelector('#upload-input').id = 'temp-upload-input';
                 vm.$el.insertAdjacentHTML('afterbegin', '<div id="upload-input"></div>');
                 expect(vm.openUploadFileDialog()).to.equal(false);
                 vm.$el.querySelector('#upload-input').remove();
                 vm.$el.querySelector('#temp-upload-input').id = 'upload-input';
+            });
+        });
+
+        describe('#getUploadFile(event)', function () {
+            it('Should return false if no file upload', function () {
+                const event = { srcElement: { files: [null] } };
+                expect(vm.getUploadFile(event)).to.equal(false);
+            });
+            it('Should clear some var if no file upload', function () {
+                const event = { srcElement: { files: [null] } };
+                vm.resourceTitle = 'something';
+                vm.$el.querySelector('#resource-title').classList.add('is-dirty');
+                vm.getUploadFile(event);
+                expect(vm.resourceTitle).to.equal(null);
+                expect(vm.$el.querySelector('#resource-title').classList.contains('is-dirty'))
+                    .to.equal(false);
+            });
+            it('Should return true if file uploaded', function () {
+                const event = { srcElement: { files: [{ name: 'fakeFile' }] } };
+                expect(vm.getUploadFile(event)).to.equal(true);
+            });
+            it('Should set some var if file uploaded', function () {
+                const event = { srcElement: { files: [{ name: 'fakeFile' }] } };
+                vm.resourceTitle = null;
+                vm.$el.querySelector('#resource-title').classList.remove('is-dirty');
+                vm.getUploadFile(event);
+                expect(vm.resourceTitle).to.equal('fakeFile');
+                expect(vm.$el.querySelector('#resource-title').classList.contains('is-dirty'))
+                    .to.equal(true);
+            });
+        });
+    });
+
+    describe('component logic with mock', function () {
+        let vm;
+        before('mock service', function () {
+            const UploadPanelWithMocks = new UploadPanelInjector({
+                '../../service/netservice.js': {
+                    uploadImage: (fileToBeUploaded, resourceInfo, callback) => {
+                        if (fileToBeUploaded === 'fake file' && resourceInfo) {
+                            callback(null, { data: resourceInfo, file: fileToBeUploaded });
+                        }
+                        callback({ file: fileToBeUploaded, data: resourceInfo }, null);
+                    },
+                },
+            });
+            document.body.insertAdjacentHTML('afterbegin', '<app></app>');
+            vm = new Vue(UploadPanelWithMocks).$mount('app');
+        });
+
+        describe('#uploadFile()', function () {
+            beforeEach('set var so that it will not return null', function () {
+                vm.resourceTitle = 'fake title';
+                vm.resourceTags = 'zhutian;test;';
+                vm.fileToBeUploaded = 'fake file';
+                vm.resourceAuthors = 'zhutian';
+                vm.resourceUrl = '//vis.cse.ust.hk';
+                vm.resourceDescription = 'it\'s just a test case';
+            });
+            it('Should return undefined if no title', function () {
+                vm.resourceTitle = null;
+                expect(vm.uploadFile()).to.equal(undefined);
+                vm.resourceTitle = '';
+                expect(vm.uploadFile()).to.equal(undefined);
+            });
+            it('Should return undefined if no tags', function () {
+                vm.resourceTags = null;
+                expect(vm.uploadFile()).to.equal(undefined);
+                vm.resourceTags = '';
+                expect(vm.uploadFile()).to.equal(undefined);
+            });
+            it('Should return undefined if no file', function () {
+                vm.fileToBeUploaded = null;
+                expect(vm.uploadFile()).to.equal(undefined);
+            });
+            it('Should call cleanUploadData', function (done) {
+                vm.uploadFile((err, result) => {
+                    expect(vm.showDialog).to.eql(false);
+                    expect(vm.fileToBeUploaded).to.equal(null);
+                    expect(vm.resourceTitle).to.equal(null);
+                    expect(vm.resourceTags).to.equal(null);
+                    expect(vm.resourceAuthors).to.equal(null);
+                    expect(vm.resourceUrl).to.equal(null);
+                    expect(vm.resourceDescription).to.equal(null);
+                    done();
+                });
+            });
+            it('Should pass right params to uploadImage', function (done) {
+                vm.uploadFile((err, result) => {
+                    const resourceInfo = result.data;
+                    expect(resourceInfo.title).to.equal('fake title');
+                    expect(resourceInfo.tags).to.eql(['zhutian', 'test', '']);
+                    expect(resourceInfo.authors).to.equal('zhutian');
+                    expect(resourceInfo.src).to.equal('//vis.cse.ust.hk');
+                    expect(resourceInfo.description).to.equal('it\'s just a test case');
+                    done();
+                });
+            });
+            it('Should raise toast and return err', function (done) {
+                vm.fileToBeUploaded = 'not a fake file';
+                vm.uploadFile((err, result) => {
+                    expect(vm.toast.MaterialSnackbar.active).to.equal(true);
+                    expect(err.file).to.equal('not a fake file');
+                    done();
+                });
             });
         });
     });
