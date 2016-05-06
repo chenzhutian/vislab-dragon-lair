@@ -45,7 +45,6 @@ module.exports = {
             },
             { test: /\.json$/, loader: 'json' },
             { test: /\.html$/, loader: 'vue-html' },
-
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader: 'url',
@@ -72,7 +71,7 @@ module.exports = {
         loaders: utils.cssLoaders(),
     },
     babel: {
-        presets: ['es2015'],
+        presets: ['es2015', 'stage-2'],
         plugins: ['transform-runtime'],
         comments: false,
     },
