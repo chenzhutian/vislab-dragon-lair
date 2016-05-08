@@ -8,9 +8,7 @@ import UploadPanel from './../UploadPanel//UploadPanel.vue';
 
 export default {
     ready() {
-        this.$nextTick(() => {
-            mdl.upgradeDom();
-        });
+        mdl.upgradeDom();
     },
     components: {
         ResourceCard,
