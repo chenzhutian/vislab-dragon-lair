@@ -22,7 +22,4 @@ export default {
             resourceData: [],
         };
     },
-    methods: {
-
-    },
 };
